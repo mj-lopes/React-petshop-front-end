@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Button } from "@mui/material";
-import { CustomArrows, Header, NavagacaoCategoria } from "./components";
+import { CarouselImagens, Header, NavagacaoCategoria } from "./components";
 
 function Content() {
   return (
@@ -16,7 +16,7 @@ function App() {
     <>
       <Header />
       <NavagacaoCategoria />
-      <CustomArrows />
+      <CarouselImagens />
       <Routes>
         <Route path="/" element={<Content />} />
       </Routes>
