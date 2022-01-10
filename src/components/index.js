@@ -1,4 +1,4 @@
 import Header from "./Header";
 import NavagacaoCategoria from "./CatNav";
-
-export { Header, NavagacaoCategoria };
+import CustomArrows from "./CarouselProp";
+export { Header, NavagacaoCategoria, CustomArrows };

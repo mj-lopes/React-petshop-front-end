@@ -19,7 +19,8 @@ const InputGlobalStyle = (
         fontFamily: "Sen, Helvetica, Sans-serif",
       },
       img: { maxWidth: "100%" },
-      "*": { margin: "0", padding: "0", textDecoration: "none" },
+      "*": { margin: "0px", padding: "0px", textDecoration: "none" },
+      div: { margin: "0px", padding: "0px" },
     }}
   />
 );
