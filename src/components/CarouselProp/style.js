@@ -4,17 +4,16 @@ import seta from "../../asserts/seta.svg";
 const ArrowNext = styled("div")({
   position: "absolute",
   top: "calc(50% - 22px)",
-
-  display: "block",
-  backgroundImage: `url(${seta})`,
-  backgroundPosition: "50% 50%",
-  backgroundRepeat: "no-repeat",
-  opacity: ".6",
+  right: "10px",
   width: "21px",
   height: "38px",
   zIndex: "100",
-  right: "10px",
 
+  backgroundImage: `url(${seta})`,
+  backgroundPosition: "50% 50%",
+  backgroundRepeat: "no-repeat",
+
+  opacity: ".6",
   cursor: "pointer",
 });
 
