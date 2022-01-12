@@ -9,6 +9,17 @@ const theme = createTheme({
       main: "#fff",
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      bplistaprodutosmobile: 700,
+      md: 900,
+      bplistaprodutos: 1100,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
 });
 
 const InputGlobalStyle = (
@@ -17,9 +28,11 @@ const InputGlobalStyle = (
       body: {
         backgroundColor: "#eceff1",
         fontFamily: "Sen, Helvetica, Sans-serif",
+        overflowX: "hidden",
       },
       img: { maxWidth: "100%" },
-      "*": { margin: "0px", padding: "0px", textDecoration: "none" },
+      "*": { margin: "0px", padding: "0px" },
+      a: { textDecoration: "none", color: "#ffc100" },
       div: { margin: "0px", padding: "0px" },
     }}
   />
