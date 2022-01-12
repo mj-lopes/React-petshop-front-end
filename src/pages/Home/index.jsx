@@ -1,12 +1,13 @@
 import React from "react";
 import CarrouselHome from "./CarouselFotosPromocionais";
 import Qualidades from "./Qualidades";
-import CategoriaProdutos from "./categoriaProdutos";
+import CategoriaProdutos from "./CategoriaProdutos";
 import { Container } from "@mui/material";
 import Gato from "../../asserts/gato.png";
 import Cachorro from "../../asserts/cachorro.png";
 import OutrosAnimais from "../../asserts/outros-img.png";
 import Brinquedos from "../../asserts/brinquedos.png";
+import Cupom from "./CupomDesconto";
 
 const Home = () => {
   return (
@@ -42,6 +43,7 @@ const Home = () => {
           tituloSessao={"Brinquedos e acessórios para qualquer diversão 🧶"}
           ladoDireito
         />
+        <Cupom />
       </Container>
     </>
   );
