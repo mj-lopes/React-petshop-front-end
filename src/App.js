@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Header, NavagacaoCategoria } from "./components";
+import { Footer, Header, NavagacaoCategoria } from "./components";
 import Home from "./pages/Home";
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
         <Route path="/produto/:uuid" element={<Home />} />
         <Route path="*" element={<Home />} />
       </Routes>
+      <Footer />
     </>
   );
 }
