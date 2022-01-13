@@ -8,6 +8,7 @@ import Cachorro from "../../asserts/cachorro.png";
 import OutrosAnimais from "../../asserts/outros-img.png";
 import Brinquedos from "../../asserts/brinquedos.png";
 import Cupom from "./CupomDesconto";
+import FooterQuote from "./Quote";
 
 const Home = () => {
   return (
@@ -45,6 +46,7 @@ const Home = () => {
         />
         <Cupom />
       </Container>
+      <FooterQuote />
     </>
   );
 };
