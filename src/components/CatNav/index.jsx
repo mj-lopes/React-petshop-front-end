@@ -16,7 +16,7 @@ const NavagacaoCategoria = () => {
     <NavWrapper>
       <nav>
         <NavList>
-          {NavItemElement("/produtos/caes", "Cachorros")}
+          {NavItemElement("/produtos/cachorro", "Cachorros")}
           {NavItemElement("/produtos/gatos", "Gatos")}
           {NavItemElement("/produtos/outros", "Outros Animais")}
           {NavItemElement(
