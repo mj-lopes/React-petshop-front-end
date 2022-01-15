@@ -1,6 +1,6 @@
 import { Box, Button, Grid, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { CardProduto } from "../../../components";
+import { CardProduto, Botao } from "../../../components";
 
 const CategoriaProdutos = ({
   ladoDireito,
@@ -34,9 +34,9 @@ const CategoriaProdutos = ({
       <Grid item bplistaprodutosmobile={12} bplistaprodutos={9}>
         <Box display={"flex"} justifyContent={"space-between"} marginY={2}>
           <h3>{tituloSessao}</h3>
-          <Button variant="contained" color="secondary">
-            <Link to={`/produtos/${categoria}`}>Veja todos os produtos</Link>
-          </Button>
+          <Botao variant="contained" borda="#FFC100">
+            <Link to={`/produtos/${categoria}`}>Veja todos</Link>
+          </Botao>
         </Box>
         <Grid
           container
