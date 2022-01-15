@@ -9,6 +9,7 @@ import OutrosAnimais from "../../asserts/outros-img.png";
 import Brinquedos from "../../asserts/brinquedos.png";
 import Cupom from "./CupomDesconto";
 import FooterQuote from "./Quote";
+import { Titulo } from "../../components";
 
 const Home = () => {
   return (
@@ -16,7 +17,7 @@ const Home = () => {
       <CarrouselHome />
       <Qualidades />
       <Container maxWidth={"lg"}>
-        <h1>Produtos para os seus Pets</h1>
+        <Titulo>Produtos para os seus Pets</Titulo>
 
         <CategoriaProdutos
           categoria={"gatos"}

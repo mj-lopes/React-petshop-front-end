@@ -1,59 +1,140 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Badge,
   Box,
   Container,
+  Divider,
+  Drawer,
   Grid,
   IconButton,
   InputAdornment,
+  Stack,
+  useMediaQuery,
 } from "@mui/material";
+
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-
-import { FieldSearch, LoginText } from "./style";
-import Marca from "../../asserts/marca.svg";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { ReactComponent as UserLogin } from "../../asserts/userlogin.svg";
+import Marca from "../../asserts/marca.svg";
+
+import { Botao } from "..";
+import { FieldSearch, LoginText } from "./style";
+import NavagacaoCategoria from "../CatNav";
 
 const Header = () => {
+  const mediaMobile = useMediaQuery("(max-width: 768px)");
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+  const campoPesquisa = (mobile = "") => (
+    <form>
+      <FieldSearch
+        fullWidth
+        mobile={mobile}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <IconButton type="submit">
+                <SearchRoundedIcon color={mobile ? "primary" : "secondary"} />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+    </form>
+  );
+
+  const marca = () => (
+    <Grid item sm={3}>
+      <Link to="/">
+        <img src={Marca} alt="Logomarca da React Dogs" height={"64px"} />
+      </Link>
+    </Grid>
+  );
+
+  const carrinho = (mobile) => (
+    <Badge badgeContent={2} color={mobile ? "primary" : "secondary"}>
+      <Link to="/">
+        <ShoppingCartOutlinedIcon sx={{ color: "#333" }} />
+      </Link>
+    </Badge>
+  );
+
+  const contaUsuario = () => (
+    <LoginText>
+      <Link to="/">
+        Bem-vindo! Entre ou <br />
+        Crie uma Conta
+      </Link>
+    </LoginText>
+  );
+
+  function closeMenuMobile(event) {
+    event.stopPropagation();
+    setMenuIsOpen(false);
+  }
+
+  function openMenuMobile(event) {
+    event.stopPropagation();
+    setMenuIsOpen(true);
+  }
+
+  if (mediaMobile) {
+    return (
+      <header style={{ backgroundColor: "#EEBB00" }}>
+        <Container maxWidth={"lg"} sx={{ py: 2 }}>
+          <Grid
+            container
+            alignItems={"center"}
+            spacing={2}
+            justifyContent={"space-between"}
+          >
+            {marca()}
+            <Grid item>
+              <Botao variant="contained" onClick={openMenuMobile}>
+                <MenuOutlinedIcon />
+              </Botao>
+            </Grid>
+          </Grid>
+          <Drawer open={menuIsOpen} anchor="right" onClose={closeMenuMobile}>
+            <Stack sx={{ width: "250px", margin: 1 }} gap={1}>
+              <Box
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-around"}
+              >
+                <UserLogin />
+                {contaUsuario()}
+                {carrinho("mobile")}
+              </Box>
+              {campoPesquisa("mobile")}
+              <Divider sx={{ my: 1 }} />
+              <NavagacaoCategoria mobile onClick={closeMenuMobile} />
+            </Stack>
+          </Drawer>
+        </Container>
+      </header>
+    );
+  }
   return (
     <header style={{ backgroundColor: "#EEBB00" }}>
       <Container maxWidth={"lg"} sx={{ py: 2 }}>
         <Grid container alignItems={"center"} spacing={2}>
-          <Grid item sm={3}>
-            <Link to="/">
-              <img src={Marca} alt="Logomarca da React Dogs" height={"64px"} />
-            </Link>
-          </Grid>
+          {marca()}
           <Grid item sm={6}>
-            <form>
-              <FieldSearch
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton type="submit">
-                        <SearchRoundedIcon color="secondary" />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </form>
+            {campoPesquisa()}
           </Grid>
           <Grid item sm={3} display={"flex"} alignItems={"center"}>
             <Box display={"flex"} alignItems={"center"} marginRight={3}>
               <UserLogin />
-              <LoginText>
-                Bem-vindo! Entre ou <br />
-                Crie uma Conta
-              </LoginText>
+              {contaUsuario()}
             </Box>
-            <Badge badgeContent={2} color="secondary">
-              <ShoppingCartOutlinedIcon />
-            </Badge>
+            {carrinho()}
           </Grid>
         </Grid>
       </Container>
+      <NavagacaoCategoria />
     </header>
   );
 };

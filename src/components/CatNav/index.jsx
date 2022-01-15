@@ -1,29 +1,30 @@
 import { Link } from "react-router-dom";
 import { NavList, NavItem, NavWrapper, NavTextItem } from "./style";
 
-const NavItemElement = (link, titulo) => {
+const NavItemElement = (link, titulo, mobile) => {
   return (
     <NavItem>
       <Link to={link}>
-        <NavTextItem>{titulo}</NavTextItem>
+        <NavTextItem mobile={mobile}>{titulo}</NavTextItem>
       </Link>
     </NavItem>
   );
 };
 
-const NavagacaoCategoria = () => {
+const NavagacaoCategoria = ({ mobile, onClick }) => {
   return (
-    <NavWrapper>
+    <NavWrapper mobile={mobile}>
       <nav>
-        <NavList>
-          {NavItemElement("/produtos/cachorro", "Cachorros")}
-          {NavItemElement("/produtos/gatos", "Gatos")}
-          {NavItemElement("/produtos/outros", "Outros Animais")}
+        <NavList mobile={mobile} onClick={onClick}>
+          {NavItemElement("/produtos/cachorro", "Cachorros", mobile)}
+          {NavItemElement("/produtos/gatos", "Gatos", mobile)}
+          {NavItemElement("/produtos/outros", "Outros Animais", mobile)}
           {NavItemElement(
             "/produtos/acessorios_brinquedos",
             "Acessórios e brinquedos",
+            mobile,
           )}
-          {NavItemElement("/produtos/remedios", "Medicação")}
+          {NavItemElement("/produtos/remedios", "Medicação", mobile)}
         </NavList>
       </nav>
     </NavWrapper>

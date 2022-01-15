@@ -28,7 +28,7 @@ const Qualidade = (img, texto, sub) => {
 
 const Qualidades = () => {
   return (
-    <Container maxWidth={"xl"}>
+    <Container>
       <Grid
         container
         style={{

@@ -32,7 +32,7 @@ const InputGlobalStyle = (
       },
       img: { maxWidth: "100%" },
       "*": { margin: "0px", padding: "0px" },
-      a: { textDecoration: "none", color: "#ffc100" },
+      a: { textDecoration: "none", color: "#333" },
       div: { margin: "0px", padding: "0px" },
     }}
   />

@@ -4,6 +4,7 @@ import CarouselImagens from "./CarouselProp";
 import CardProduto from "./CardProduto";
 import Footer from "./Footer";
 import Titulo from "./Titulo";
+import Botao from "./Botao";
 
 export {
   Header,
@@ -12,4 +13,5 @@ export {
   CardProduto,
   Footer,
   Titulo,
+  Botao,
 };

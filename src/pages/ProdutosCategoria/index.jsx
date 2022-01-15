@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { useParams } from "react-router";
 import { CardProduto, Titulo } from "../../components";
 
