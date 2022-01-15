@@ -6,7 +6,7 @@ import Suporte from "../../../asserts/suporte.svg";
 
 const Qualidade = (img, texto, sub) => {
   return (
-    <Grid item md={3} sm={6} xs={12} paddingY={1}>
+    <Grid item paddingY={1}>
       <Grid container gap={1} direction={"column"} alignItems={"center"}>
         <img src={img} alt={texto}></img>
         <Box>
@@ -34,9 +34,11 @@ const Qualidades = () => {
         style={{
           backgroundColor: "#FFC100",
           marginTop: "-70px",
-          padding: "50px 0 20px 0",
+          padding: "50px 16px 20px 16px",
           borderRadius: "50px",
         }}
+        justifyContent={"space-around"}
+        gap={2}
       >
         {Qualidade(Entrega, "Frete Gratis", "*Sujeito à condições")}
         {Qualidade(Cartao, "Até 3x sem juros", "*Compras acima de R$ 150")}
