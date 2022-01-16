@@ -10,11 +10,13 @@ const CategoriaProdutos = ({
   categoria,
 }) => {
   return (
+    // grid principal
     <Grid
       container
       flexDirection={ladoDireito ? "row-reverse" : "row"}
       marginY={4}
     >
+      {/* Grid Imagem */}
       <Grid
         item
         md={3}
@@ -31,6 +33,7 @@ const CategoriaProdutos = ({
           }}
         />
       </Grid>
+      {/* Grid produtos */}
       <Grid item bplistaprodutosmobile={12} bplistaprodutos={9}>
         <Box display={"flex"} justifyContent={"space-between"} marginY={2}>
           <h3>{tituloSessao}</h3>
