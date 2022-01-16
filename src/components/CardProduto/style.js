@@ -8,6 +8,9 @@ const WrapperCartao = styled(Card)((props) => ({
   ":hover": {
     boxShadow: `0 0 7px 4px ${props.theme.palette.main}`,
   },
+  "& .MuiCardHeader-action": {
+    marginRight: 0,
+  },
 }));
 
 const PrecoAVista = styled(Typography)((props) => ({

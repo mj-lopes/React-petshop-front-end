@@ -26,7 +26,7 @@ const Home = () => {
           tituloSessao={"Produtos felinos mais vendidos 🐱"}
         />
         <CategoriaProdutos
-          categoria={"caes"}
+          categoria={"cachorro"}
           imgLateral={Cachorro}
           imgAlt={"Cachorro olhando para a tela"}
           tituloSessao={"Produtos caninos mais vendidos 🐶"}
@@ -42,7 +42,7 @@ const Home = () => {
           categoria={"acessorios_brinquedos"}
           imgLateral={Brinquedos}
           imgAlt={"Coleira, arranhador para gatos e bolinha"}
-          tituloSessao={"Brinquedos e acessórios para qualquer diversão 🧶"}
+          tituloSessao={"Brinquedos e acessórios para diversão 🧶"}
           ladoDireito
         />
         <Cupom />

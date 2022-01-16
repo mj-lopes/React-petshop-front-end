@@ -10,7 +10,7 @@ import {
 const CardProduto = () => {
   return (
     <WrapperCartao raised>
-      <CardHeader action={"☆4.9"} sx={{ margin: "0" }} />
+      <CardHeader action={"☆4.9"} sx={{ margin: "0px" }} />
       <CardImg image={Product} component={"img"} />
       <CardContent>
         <Typography paragraph textAlign={"center"} fontFamily={"Sen"}>
