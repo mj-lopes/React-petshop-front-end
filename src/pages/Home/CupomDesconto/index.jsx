@@ -1,14 +1,10 @@
-import { Box, Divider, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Box, Divider, Typography, useMediaQuery } from "@mui/material";
+import { CupomWrapper, CupomCodigoWrapper, CupomTexto } from "./style";
 
 const Cupom = () => {
   return (
-    <Grid
+    <CupomWrapper
       container
-      justifyContent={"space-around"}
-      bgcolor={"white"}
-      padding={"24px 16px"}
-      gap={3}
-      alignItems={"center"}
       direction={useMediaQuery("(min-width: 1050px)") ? "row" : "column"}
     >
       <Box textAlign={"center"}>
@@ -33,26 +29,21 @@ const Cupom = () => {
         variant="middle"
       />
 
-      <Box
-        display={"flex"}
-        gap={2}
-        alignItems={"center"}
+      <CupomCodigoWrapper
         flexDirection={useMediaQuery("(min-width: 500px)") ? "row" : "column"}
       >
-        <Typography
+        <CupomTexto
           maxWidth={useMediaQuery("(min-width: 500px)") ? 150 : "auto"}
-          fontSize={"1.125rem"}
-          marginRight={1}
         >
           Ensira no carrinho de compras o código:
-        </Typography>
+        </CupomTexto>
         <Box border={"3px dashed #FFC100"} padding={1}>
           <Typography fontSize={48} color={"primary"}>
             REACT10
           </Typography>
         </Box>
-      </Box>
-    </Grid>
+      </CupomCodigoWrapper>
+    </CupomWrapper>
   );
 };
 
