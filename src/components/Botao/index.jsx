@@ -1,18 +1,26 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
 
-const Btn = styled(Button)(({ theme, branco }) => ({
-  backgroundColor: theme.palette.secondary.main,
-  color: theme.palette.primary.main,
+const Btn = styled(Button)(({ theme, branco, amarelo }) => ({
+  backgroundColor: amarelo
+    ? theme.palette.primary.main
+    : theme.palette.secondary.main,
+  color: amarelo ? theme.palette.secondary.main : theme.palette.primary.main,
 
   fontWeight: "bold",
   padding: ".5rem",
 
   ":hover": {
-    backgroundColor: branco ? theme.palette.secondary.main : "transparent",
-    color: branco ? theme.palette.primary.main : "white",
+    backgroundColor:
+      amarelo || branco ? theme.palette.secondary.main : "transparent",
+    color:
+      amarelo || branco
+        ? theme.palette.primary.main
+        : theme.palette.secondary.main,
     boxShadow: `0 0 7px 4px ${
-      branco ? theme.palette.primary.main : theme.palette.secondary.main
+      amarelo || branco
+        ? theme.palette.primary.main
+        : theme.palette.secondary.main
     }`,
   },
 }));
