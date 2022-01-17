@@ -37,7 +37,7 @@ const CategoriaProdutos = ({
       <Grid item bplistaprodutosmobile={12} bplistaprodutos={9}>
         <Box display={"flex"} justifyContent={"space-between"} marginY={2}>
           <h3>{tituloSessao}</h3>
-          <Botao variant="contained" borda="#FFC100">
+          <Botao variant="contained" branco="y">
             <Link to={`/produtos/${categoria}`}>Veja todos</Link>
           </Botao>
         </Box>

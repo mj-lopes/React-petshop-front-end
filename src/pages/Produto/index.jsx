@@ -73,7 +73,7 @@ const Produto = () => {
                     35,99
                   </sub>
                 </div>
-                <Botao variant="contained" destaque="destaque" borda="y">
+                <Botao variant="contained" branco="y">
                   <p>adicionar ao carrinho</p>
                 </Botao>
               </Box>
