@@ -39,3 +39,12 @@ export function POST_NEW_USER(formData) {
     },
   };
 }
+
+export function GET_PRODUCTS_FROM_CATEGORY(categoria) {
+  return {
+    url: BASE_END_POINT + "/products/" + categoria,
+    options: {
+      method: "GET",
+    },
+  };
+}

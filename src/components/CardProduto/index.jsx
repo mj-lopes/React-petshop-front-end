@@ -13,21 +13,31 @@ import {
   CardImg,
 } from "./style.js";
 
-const CardProduto = () => {
+const CardProduto = ({ dados }) => {
+  const { uuid, imgurl, nome, preco } = dados;
+  const precoVenda = preco.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  const precoParcelado = (preco / 3 + 3).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
   return (
     <WrapperCartao raised>
       <Link to="/produtos/cachorro">
         <CardActionArea>
           <CardHeader action={"☆4.9"} sx={{ margin: "0px" }} />
-          <CardImg image={Product} component={"img"} />
+          <CardImg image={imgurl || Product} component={"img"} />
           <CardContent>
             <Typography paragraph textAlign={"center"} fontFamily={"Sen"}>
-              Ração asdasd
+              {nome}
             </Typography>
             <PrecoAVista paragraph>
-              R$ 99,99 <span>ou</span>
+              {precoVenda} <span>ou</span>
               <br />
-              <PrecoParcelado>até 3x de R$ 35,99</PrecoParcelado>
+              <PrecoParcelado>até 3x de {precoParcelado}</PrecoParcelado>
             </PrecoAVista>
           </CardContent>
         </CardActionArea>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import { useParams } from "react-router";
 import { CardProduto, Titulo } from "../../components";
+import { GET_PRODUCTS_FROM_CATEGORY } from "../../api/endPoints";
 
 const tituloCategoria = (cat) => {
   switch (cat) {
@@ -26,11 +27,13 @@ const ListaProdutosCategoria = () => {
 
   useEffect(() => {
     async function fetchProdutos() {
-      const response = await fetch(
-        `http://localhost:9090/products/${categoria}`,
+      const { url, options } = GET_PRODUCTS_FROM_CATEGORY(categoria);
+      const data = await fetch(url, options).then((response) =>
+        response.json(),
       );
-      const json = await response.json();
-      setData(json);
+
+      setData(data);
+      console.log(data);
     }
     fetchProdutos();
   }, [categoria]);
@@ -39,18 +42,11 @@ const ListaProdutosCategoria = () => {
     <Container sx={{ minHeight: "100vh" }}>
       <Titulo>{tituloCategoria(categoria)}</Titulo>
       <Grid container justifyContent={"space-around"} gap={3}>
-        <Grid item>
-          <CardProduto />
-        </Grid>
-        <Grid item>
-          <CardProduto />
-        </Grid>
-        <Grid item>
-          <CardProduto />
-        </Grid>
-        <Grid item>
-          <CardProduto />
-        </Grid>
+        {data.map((produto) => (
+          <Grid item>
+            <CardProduto dados={produto} key={`produto - ${produto.uuid}`} />
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );
