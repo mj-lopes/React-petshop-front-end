@@ -26,3 +26,16 @@ export function USER_TOKEN_AUTH(token) {
     },
   };
 }
+
+export function POST_NEW_USER(formData) {
+  return {
+    url: BASE_END_POINT + "/users",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    },
+  };
+}

@@ -2,6 +2,7 @@ import { Botao, Titulo } from "../../../components";
 import Input from "../../../components/Input";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { POST_NEW_USER } from "../../../api/endPoints";
 
 const Cadastro = () => {
   const validationSchema = yup.object({
@@ -34,8 +35,19 @@ const Cadastro = () => {
       senha: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 4));
+    onSubmit: async (values) => {
+      const formData = {
+        nome: values.usuario,
+        cpf: values.cpf,
+        email: values.email,
+        senha: values.senha,
+      };
+      const { url, options } = POST_NEW_USER(formData);
+
+      const token = await fetch(url, options).then((response) =>
+        response.json(),
+      );
+      console.log(JSON.stringify(token));
     },
   });
 
