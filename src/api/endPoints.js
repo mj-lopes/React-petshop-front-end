@@ -1,4 +1,4 @@
-const BASE_END_POINT = "http://localhost:9090/";
+const BASE_END_POINT = "http://localhost:9090";
 
 export function FETCH_USER_TOKEN(usuario, senha) {
   const basic64UsuarioSenha = btoa(usuario.concat(`:${senha}`));
