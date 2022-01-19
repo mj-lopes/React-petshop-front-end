@@ -32,7 +32,7 @@ const Login = () => {
           value={formik.values.senha}
           onChange={formik.handleChange}
         />
-        <Botao amarelo="y" type="submit">
+        <Botao amarelo="y" type="submit" style={{ margin: ".5rem 0" }}>
           Entrar
         </Botao>
       </form>

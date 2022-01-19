@@ -81,7 +81,7 @@ const Cadastro = () => {
           error={formik.touched.senha && Boolean(formik.errors.senha)}
           helperText={formik.touched.senha && formik.errors.senha}
         />
-        <Botao amarelo="y" type="submit">
+        <Botao amarelo="y" type="submit" style={{ margin: "1rem 0" }}>
           Enviar
         </Botao>
       </form>
