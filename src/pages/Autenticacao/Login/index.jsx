@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { Botao, Subtitulo, Titulo } from "../../../components";
 import Input from "../../../components/Input";
 import { useFormik } from "formik";
+import { FETCH_USER_TOKEN, USER_TOKEN_AUTH } from "../../../api/endPoints";
 
 const Login = () => {
   const formik = useFormik({
@@ -9,8 +10,15 @@ const Login = () => {
       usuario: "",
       senha: "",
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 4));
+    onSubmit: async ({ usuario, senha }) => {
+      const { url, options } = FETCH_USER_TOKEN(usuario, senha);
+      const user = await fetch(url, options)
+        .then((response) => response.json())
+        .then(async ({ token }) => {
+          const { url, options } = USER_TOKEN_AUTH(token);
+          return await fetch(url, options).then((response) => response.json());
+        });
+      alert(JSON.stringify(user, null, 2));
     },
   });
 
