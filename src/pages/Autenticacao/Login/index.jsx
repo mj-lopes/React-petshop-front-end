@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 import { FETCH_USER_TOKEN, USER_TOKEN_AUTH } from "../../../api/endPoints";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const validationSchema = yup.object({
@@ -66,7 +67,9 @@ const Login = () => {
         <p style={{ marginBottom: "1rem" }}>
           Ainda não possui conta? Cadastre-se, é seguro e gratuito.
         </p>
-        <Botao branco="y">Cadastrar</Botao>
+        <Link to={"./cadastro"}>
+          <Botao branco="y">Cadastrar</Botao>
+        </Link>
       </Box>
     </>
   );

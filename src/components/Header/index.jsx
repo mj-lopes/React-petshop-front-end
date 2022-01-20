@@ -81,7 +81,7 @@ const Header = () => {
 
   const contaUsuario = () => (
     <LoginText>
-      <Link to="/">
+      <Link to="/login">
         Bem-vindo! Entre ou <br />
         Crie uma Conta
       </Link>

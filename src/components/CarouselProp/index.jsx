@@ -20,6 +20,8 @@ export default class CarouselImagens extends Component {
       slidesToScroll: 1,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
+      autoplay: true,
+      autoplaySpeed: 5000,
     };
     return (
       <div>

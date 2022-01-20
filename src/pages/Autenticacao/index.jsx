@@ -19,7 +19,7 @@ const Autenticacao = () => {
       <Grid item md={4} alignSelf={"center"} margin={[1, 2]}>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="cadastro" element={<Cadastro />} />
+          <Route path="/cadastro" element={<Cadastro />} />
         </Routes>
       </Grid>
     </Grid>
