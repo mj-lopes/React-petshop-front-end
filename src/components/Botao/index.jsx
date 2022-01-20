@@ -8,7 +8,7 @@ const Btn = styled(Button)(({ theme, branco, amarelo }) => ({
   color: amarelo ? theme.palette.secondary.main : theme.palette.primary.main,
 
   fontWeight: "bold",
-  padding: ".5rem 2rem",
+  padding: ".5rem 1rem",
 
   ":hover": {
     backgroundColor:

@@ -1,5 +1,9 @@
-import { Box, Button, Grid, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { GET_PRODUCTS_FROM_CATEGORY } from "../../../api/endPoints";
+
+import { Box, Grid, useMediaQuery } from "@mui/material";
 import { CardProduto, Botao } from "../../../components";
 
 const CategoriaProdutos = ({
@@ -9,6 +13,17 @@ const CategoriaProdutos = ({
   tituloSessao,
   categoria,
 }) => {
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    async function fetchDados() {
+      const { url, options } = GET_PRODUCTS_FROM_CATEGORY(categoria);
+      const dados = await fetch(url, options).then((resp) => resp.json());
+      setDados(dados.slice(0, 3));
+    }
+    fetchDados();
+  }, [categoria]);
+
   return (
     // grid principal
     <Grid
@@ -48,15 +63,11 @@ const CategoriaProdutos = ({
           }
           gap={2}
         >
-          <Grid item>
-            <CardProduto />
-          </Grid>
-          <Grid item>
-            <CardProduto />
-          </Grid>
-          <Grid item>
-            <CardProduto />
-          </Grid>
+          {dados.map((item) => (
+            <Grid item key={`item ${item.uuid}`}>
+              <CardProduto dados={item} />
+            </Grid>
+          ))}
         </Grid>
       </Grid>
     </Grid>
