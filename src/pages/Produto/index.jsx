@@ -3,6 +3,9 @@ import { Botao, Titulo } from "../../components/";
 import Img from "../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
 import PegadasBG from "../../asserts/paw-bg.png";
 import cartao from "../../asserts/cartao.svg";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { GET_PRODUCT_DATA } from "../../api/endPoints";
 
 const Comentario = () => (
   <Grid item>
@@ -28,6 +31,18 @@ const Comentario = () => (
 );
 
 const Produto = () => {
+  const { uuid } = useParams();
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    async function fetchDados() {
+      const { url, options } = GET_PRODUCT_DATA(uuid);
+      const dados = await fetch(url, options).then((resp) => resp.json());
+      setDados(dados);
+    }
+    fetchDados();
+  }, [uuid]);
+
   const mobile = useMediaQuery("(max-width: 700px)");
   return (
     <Container sx={{ my: 6 }}>
@@ -43,7 +58,11 @@ const Produto = () => {
                   borderRadius: "12px",
                 }}
               >
-                <img src={Img} width={300} alt="" />
+                <img
+                  src={dados.imgurl || Img}
+                  width={300}
+                  alt={`imagem produto ${dados.nome}`}
+                />
               </div>
             </Grid>
             <Grid
@@ -55,22 +74,23 @@ const Produto = () => {
               flex={"1"}
             >
               <div style={{ marginBottom: "2rem" }}>
-                <h2 style={{ marginBottom: "1rem" }}>
-                  Produto Nome - Ração mockup
-                </h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Eveniet assumenda nobis hic magni voluptatem repellat vitae
-                  culpa earum minima suscipit, cupiditate enim nam laborum
-                  velit, eligendi excepturi corrupti expedita ad!
-                </p>
+                <h2 style={{ marginBottom: "1rem" }}>{dados.nome}</h2>
+                <p>{dados.descricao}</p>
               </div>
               <Box display={"flex"} alignItems={"center"} gap={5}>
                 <div>
-                  <h1 style={{ lineHeight: 1 }}>R$99.99</h1>
+                  <h1 style={{ lineHeight: 1 }}>
+                    {dados.preco?.toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
+                  </h1>
                   <sub>
-                    ou <img src={cartao} alt="cartao" width={18} /> 3x de R$
-                    35,99
+                    ou <img src={cartao} alt="cartao" width={18} /> 3x de{" "}
+                    {(dados.preco / 3 + 3)?.toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
                   </sub>
                 </div>
                 <Botao variant="contained" amarelo="y">

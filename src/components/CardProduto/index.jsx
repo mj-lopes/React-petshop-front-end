@@ -26,7 +26,7 @@ const CardProduto = ({ dados }) => {
 
   return (
     <WrapperCartao raised>
-      <Link to="/produtos/cachorro">
+      <Link to={`/produto/${uuid}`}>
         <CardActionArea>
           <CardHeader action={"☆4.9"} sx={{ margin: "0px" }} />
           <CardImg image={imgurl || Product} component={"img"} />

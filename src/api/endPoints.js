@@ -48,3 +48,12 @@ export function GET_PRODUCTS_FROM_CATEGORY(categoria) {
     },
   };
 }
+
+export function GET_PRODUCT_DATA(uuid) {
+  return {
+    url: BASE_END_POINT + "/product/" + uuid,
+    options: {
+      method: "GET",
+    },
+  };
+}
