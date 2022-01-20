@@ -57,3 +57,12 @@ export function GET_PRODUCT_DATA(uuid) {
     },
   };
 }
+
+export function GET_PRODUCTS_FROM_SEARCH(query) {
+  return {
+    url: BASE_END_POINT + "/search/" + query,
+    options: {
+      method: "GET",
+    },
+  };
+}

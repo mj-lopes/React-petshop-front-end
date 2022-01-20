@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as yup from "yup";
+import { useFormik } from "formik";
 import {
   Badge,
   Box,
@@ -18,7 +20,6 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { ReactComponent as UserLogin } from "../../asserts/userlogin.svg";
 import Marca from "../../asserts/marca.svg";
-
 import { Botao } from "..";
 import { FieldSearch, LoginText } from "./style";
 import NavagacaoCategoria from "../CatNav";
@@ -26,12 +27,29 @@ import NavagacaoCategoria from "../CatNav";
 const Header = () => {
   const mediaMobile = useMediaQuery("(max-width: 768px)");
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const navigator = useNavigate();
+
+  const validationSchema = yup.object({
+    query: yup
+      .string("Escreva um valor chave para a pesquisa")
+      .required("Escreva termos chaves para a pesquisa"),
+  });
+
+  const formik = useFormik({
+    initialValues: { query: "" },
+    validationSchema: validationSchema,
+    onSubmit: ({ query }) => {
+      navigator(`../busca/${query}`);
+    },
+  });
 
   const campoPesquisa = (mobile = "") => (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <FieldSearch
         fullWidth
         mobile={mobile}
+        value={formik.values.query}
+        onChange={({ target }) => formik.setValues({ query: target.value })}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
