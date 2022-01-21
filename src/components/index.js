@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Titulo from "./Titulo";
 import Botao from "./Botao";
 import Subtitulo from "./Subtitulo";
+import Texto from "./texto";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   Titulo,
   Subtitulo,
   Botao,
+  Texto,
 };

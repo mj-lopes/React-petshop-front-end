@@ -51,6 +51,7 @@ const Login = () => {
         <Input
           label="Senha"
           id="senha"
+          type={"password"}
           name="senha"
           value={formik.values.senha}
           onChange={formik.handleChange}

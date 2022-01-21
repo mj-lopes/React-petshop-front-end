@@ -1,4 +1,4 @@
-import { Botao, Titulo } from "../../../components";
+import { Botao, Titulo, Texto } from "../../../components";
 import Input from "../../../components/Input";
 import * as yup from "yup";
 import { useFormik } from "formik";
@@ -88,6 +88,7 @@ const Cadastro = () => {
           label="Senha*"
           id="senha"
           name="senha"
+          type={"password"}
           value={formik.values.senha}
           onChange={formik.handleChange}
           error={formik.touched.senha && Boolean(formik.errors.senha)}
@@ -97,6 +98,26 @@ const Cadastro = () => {
           Enviar
         </Botao>
       </form>
+      <Texto>
+        As suas informações estão totalmente seguras com a gente 🐱‍👤
+      </Texto>
+      <Texto>
+        Todos os seus dados são criptografados, e o acesso é disponibilizado
+        somente a você e aos novos administradores.
+      </Texto>
+      <Texto my={1}>
+        Ao criar uma conta, você concorda com os Termos e Condições de Uso da
+        ReactPetshop.
+      </Texto>
+      <Texto marginBottom={4}>
+        Para mais informações,{" "}
+        <span
+          style={{ cursor: "pointer", fontWeight: "bold" }}
+          onClick={() => alert("Sou eeeeuu, o tiririiica")}
+        >
+          leia os nossos termos de uso.
+        </span>
+      </Texto>
     </>
   );
 };

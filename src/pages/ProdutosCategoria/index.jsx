@@ -41,7 +41,7 @@ const ListaProdutosCategoria = () => {
   return (
     <Container sx={{ minHeight: "100vh" }}>
       <Titulo>{tituloCategoria(categoria)}</Titulo>
-      <Grid container justifyContent={"space-around"} gap={3}>
+      <Grid container justifyContent={"space-around"} gap={5} marginBottom={6}>
         {data.map((produto) => (
           <Grid item>
             <CardProduto dados={produto} key={`produto - ${produto.uuid}`} />

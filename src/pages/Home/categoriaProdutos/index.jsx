@@ -49,7 +49,7 @@ const CategoriaProdutos = ({
         />
       </Grid>
       {/* Grid produtos */}
-      <Grid item bplistaprodutosmobile={12} bplistaprodutos={9}>
+      <Grid item bplistaprodutosmobile={12} bplistaprodutos={9} gap={5}>
         <Box display={"flex"} justifyContent={"space-between"} marginY={2}>
           <h3>{tituloSessao}</h3>
           <Botao variant="contained" branco="y">
