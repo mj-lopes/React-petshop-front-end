@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 const WrapperCartao = styled(Card)((props) => ({
   maxWidth: "250px",
+  minHeight: "340px",
   borderRadius: "12px",
   ":hover": {
     boxShadow: `0 0 7px 4px ${props.theme.palette.main}`,

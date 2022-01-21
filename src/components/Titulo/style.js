@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 
 const StyledTypography = styled(Typography)({
   position: "relative",
-  margin: "1rem 0",
+  margin: "2rem 0",
 
   fontSize: "clamp(1rem, 10vw, 4rem)",
   color: "#333",
