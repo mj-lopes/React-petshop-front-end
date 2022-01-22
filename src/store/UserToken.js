@@ -1,21 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FETCH_USER_TOKEN } from "../api/endPoints";
+import getLocalStorage from "../helper/getLocalStorage";
 
 const slice = createSlice({
   name: "Token",
   initialState: {
     loading: false,
-    data: null,
+    data: getLocalStorage("token", null),
     error: null,
   },
   reducers: {
     fetchIniciado(state) {
       state.loading = true;
     },
-    fetchSucesso(state, action) {
-      state.loading = false;
-      state.data = action.payload;
-      state.error = null;
+    fetchSucesso: {
+      reducer(state, action) {
+        state.loading = false;
+        state.data = action.payload;
+        state.error = null;
+      },
+      prepare(payload) {
+        return {
+          payload,
+          meta: { localStorage: { key: "token", value: payload.token } },
+        };
+      },
     },
     fetchErro(state, action) {
       state.loading = false;
