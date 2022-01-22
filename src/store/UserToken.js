@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { USER_TOKEN_AUTH } from "../api/endPoints";
-import { fetchToken } from "./UserToken";
+import { FETCH_USER_TOKEN } from "../api/endPoints";
 
 const slice = createSlice({
-  name: "Usuario",
+  name: "Token",
   initialState: {
     loading: false,
     data: null,
@@ -30,13 +28,13 @@ const slice = createSlice({
 export const { fetchIniciado, fetchSucesso, fetchErro } = slice.actions;
 export default slice.reducer;
 
-export const fetchUsuario = (usuario, senha) => async (dispatch) => {
+export const fetchToken = (usuario, senha) => async (dispatch) => {
   try {
     dispatch(fetchIniciado());
-    const { payload } = await dispatch(fetchToken(usuario, senha));
-    const { url, options } = USER_TOKEN_AUTH(payload.token);
-    const dadosUsuario = await fetch(url, options).then((resp) => resp.json());
-    return dispatch(fetchSucesso(dadosUsuario));
+
+    const { url, options } = FETCH_USER_TOKEN(usuario, senha);
+    const token = await fetch(url, options).then((resp) => resp.json());
+    return dispatch(fetchSucesso(token));
   } catch (erro) {
     return dispatch(fetchErro(erro));
   }

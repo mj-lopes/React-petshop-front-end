@@ -5,8 +5,12 @@ import Produto from "./pages/Produto";
 import ListaProdutosCategoria from "./pages/ProdutosCategoria";
 import Autenticacao from "./pages/Autenticacao";
 import BuscaPorQuery from "./pages/Busca";
+import { useDispatch } from "react-redux";
+import { fetchUsuario } from "./store/user";
 
 function App() {
+  const dispatch = useDispatch();
+  dispatch(fetchUsuario("MLRJunior", "69832062288"));
   return (
     <>
       <Header />
