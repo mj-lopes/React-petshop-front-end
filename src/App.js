@@ -13,7 +13,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login/*" element={<Autenticacao />} />
         <Route path="/busca/:query" element={<BuscaPorQuery />} />
         <Route path="/produto/:uuid" element={<Produto />} />
         <Route path="/produtos" element={<ListaProdutosCategoria />} />
@@ -21,7 +20,8 @@ function App() {
           path="/produtos/:categoria"
           element={<ListaProdutosCategoria />}
         />
-        <Route path="/Conta" element={<UserPage />} />
+        <Route path="/conta/*" element={<UserPage />} />
+        <Route path="/login/*" element={<Autenticacao />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

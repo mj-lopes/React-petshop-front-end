@@ -9,8 +9,7 @@ const Autenticacao = () => {
   const userData = useSelector(({ usuario }) => usuario?.data);
   const mobile = useMediaQuery("(max-width: 900px)");
 
-  if (userData) return <Navigate to="/conta" />;
-
+  if (userData) return <Navigate to="/conta" replace={true} />;
   return (
     <Grid container gap={3}>
       <Grid
