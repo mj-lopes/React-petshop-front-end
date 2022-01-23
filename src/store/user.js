@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 import { USER_TOKEN_AUTH } from "../api/endPoints";
 import { fetchToken } from "./UserToken";
 
@@ -39,4 +40,15 @@ export const fetchUsuario = (usuario, senha) => async (dispatch) => {
   } catch (erro) {
     return dispatch(fetchErro(erro));
   }
+};
+
+export const loginAutomatico = () => async (dispatch, getState) => {
+  try {
+    dispatch(fetchIniciado());
+    const { token } = getState((state) => state);
+    const { url, options } = USER_TOKEN_AUTH(token.data);
+    const dadosUsuario = await fetch(url, options).then((resp) => resp.json());
+
+    return dispatch(fetchSucesso(dadosUsuario));
+  } catch {}
 };

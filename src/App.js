@@ -6,22 +6,36 @@ import ListaProdutosCategoria from "./pages/ProdutosCategoria";
 import Autenticacao from "./pages/Autenticacao";
 import BuscaPorQuery from "./pages/Busca";
 import UserPage from "./pages/UserPage";
+import ProtectedRoute from "./helper/protectedRouter";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loginAutomatico } from "./store/user";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loginAutomatico());
+  }, [dispatch]);
+
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/busca/:query" element={<BuscaPorQuery />} />
+
         <Route path="/produto/:uuid" element={<Produto />} />
         <Route path="/produtos" element={<ListaProdutosCategoria />} />
         <Route
           path="/produtos/:categoria"
           element={<ListaProdutosCategoria />}
         />
-        <Route path="/conta/*" element={<UserPage />} />
+
+        <Route to="/" element={<ProtectedRoute />}>
+          <Route path="/conta" element={<UserPage />} />
+        </Route>
         <Route path="/login/*" element={<Autenticacao />} />
+
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
