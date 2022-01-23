@@ -1,13 +1,14 @@
 import { Box } from "@mui/material";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
 import { Botao, Subtitulo, Titulo } from "../../../components";
 import Input from "../../../components/Input";
-import { useFormik } from "formik";
-import * as yup from "yup";
-
-import { FETCH_USER_TOKEN, USER_TOKEN_AUTH } from "../../../api/endPoints";
-import { Link } from "react-router-dom";
+import { fetchUsuario } from "../../../store/user";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const validationSchema = yup.object({
     usuario: yup
       .string("Escreva o seu nome de usuário")
@@ -23,15 +24,8 @@ const Login = () => {
       senha: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async ({ usuario, senha }) => {
-      const { url, options } = FETCH_USER_TOKEN(usuario, senha);
-      const user = await fetch(url, options)
-        .then((response) => response.json())
-        .then(async ({ token }) => {
-          const { url, options } = USER_TOKEN_AUTH(token);
-          return await fetch(url, options).then((response) => response.json());
-        });
-      alert(JSON.stringify(user, null, 2));
+    onSubmit: ({ usuario, senha }) => {
+      dispatch(fetchUsuario(usuario, senha));
     },
   });
 

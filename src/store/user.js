@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 import { USER_TOKEN_AUTH } from "../api/endPoints";
 import { fetchToken } from "./UserToken";
 

@@ -23,12 +23,13 @@ import Marca from "../../asserts/marca.svg";
 import { Botao } from "..";
 import { FieldSearch, LoginText } from "./style";
 import NavagacaoCategoria from "../CatNav";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const mediaMobile = useMediaQuery("(max-width: 768px)");
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const navigator = useNavigate();
-
+  const user = useSelector(({ usuario }) => usuario?.data);
   const validationSchema = yup.object({
     query: yup
       .string("Escreva um valor chave para a pesquisa")
@@ -79,14 +80,23 @@ const Header = () => {
     </Badge>
   );
 
-  const contaUsuario = () => (
-    <LoginText>
-      <Link to="/login">
-        Bem-vindo! Entre ou <br />
-        Crie uma Conta
-      </Link>
-    </LoginText>
-  );
+  const contaUsuario = () => {
+    return (
+      <>
+        <UserLogin />
+        <LoginText>
+          {user ? (
+            <Link to="/conta">Olá, {user?.nome}</Link>
+          ) : (
+            <Link to="/login">
+              Bem-vindo! Entre ou <br />
+              Crie uma Conta
+            </Link>
+          )}
+        </LoginText>
+      </>
+    );
+  };
 
   function closeMenuMobile(event) {
     event.stopPropagation();
@@ -122,7 +132,6 @@ const Header = () => {
                 alignItems={"center"}
                 justifyContent={"space-around"}
               >
-                <UserLogin />
                 {contaUsuario()}
                 {carrinho("mobile")}
               </Box>
@@ -145,7 +154,6 @@ const Header = () => {
           </Grid>
           <Grid item sm={3} display={"flex"} alignItems={"center"}>
             <Box display={"flex"} alignItems={"center"} marginRight={3}>
-              <UserLogin />
               {contaUsuario()}
             </Box>
             {carrinho()}

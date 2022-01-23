@@ -5,12 +5,9 @@ import Produto from "./pages/Produto";
 import ListaProdutosCategoria from "./pages/ProdutosCategoria";
 import Autenticacao from "./pages/Autenticacao";
 import BuscaPorQuery from "./pages/Busca";
-import { useDispatch } from "react-redux";
-import { fetchUsuario } from "./store/user";
+import UserPage from "./pages/UserPage";
 
 function App() {
-  const dispatch = useDispatch();
-  dispatch(fetchUsuario("MLRJunior", "69832062288"));
   return (
     <>
       <Header />
@@ -24,6 +21,7 @@ function App() {
           path="/produtos/:categoria"
           element={<ListaProdutosCategoria />}
         />
+        <Route path="/Conta" element={<UserPage />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
