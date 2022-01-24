@@ -9,9 +9,12 @@ import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOut
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import { useEffect, useState } from "react";
 import { GET_PRODUCT_BY_UUID } from "../../../api/endPoints";
+import { useDispatch } from "react-redux";
+import { addAoCarrinho, removeDoCarrinho } from "../../../store/carrinho";
 
 const ProdutoCarrinho = ({ produto }) => {
   const [dadosProduto, setDadosProduto] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetch_produto(uuid) {
@@ -39,17 +42,24 @@ const ProdutoCarrinho = ({ produto }) => {
         sx={{ backgroundColor: "#fff", borderRadius: "10px" }}
         secondaryAction={
           <>
-            <IconButton>
+            <IconButton
+              onClick={() => dispatch(removeDoCarrinho(dadosProduto.uuid))}
+            >
               <RemoveCircleOutlineOutlinedIcon />
             </IconButton>
-            <IconButton>
+            <IconButton
+              onClick={() => dispatch(addAoCarrinho(dadosProduto.uuid))}
+            >
               <AddCircleOutlineOutlinedIcon />
             </IconButton>
           </>
         }
       >
         <ListItemAvatar sx={{ maxWidth: "100px", mx: 2 }}>
-          <img src={dadosProduto.imgurl || Img} alt="" />
+          <img
+            src={dadosProduto.imgurl || Img}
+            alt={dadosProduto.nome || "Imagem placeholder do produto"}
+          />
         </ListItemAvatar>
         <ListItemText
           primary={dadosProduto.nome}

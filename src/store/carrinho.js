@@ -28,10 +28,19 @@ const slice = createSlice({
       }
     },
     removeDoCarrinho(state, action) {
-      state.listaProdutos = removeFromArray(
-        state.listaProdutos,
-        action.payload,
-      );
+      // Busca pelo item
+      state.listaProdutos.forEach((item, index, arr) => {
+        if (item.produto === action.payload) {
+          const quantidade = arr[index].quantidade;
+          // Se a quantidade for igual a um, o item é excluído do array
+          if (quantidade === 1) {
+            state.listaProdutos = arr.filter((_, i) => i !== index);
+          } else {
+            // Do contrário, a sua quantidade é decressida em 1
+            arr[index].quantidade -= 1;
+          }
+        }
+      });
     },
   },
 });
