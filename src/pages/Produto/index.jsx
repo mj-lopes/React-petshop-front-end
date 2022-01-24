@@ -6,6 +6,8 @@ import cartao from "../../asserts/cartao.svg";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GET_PRODUCT_DATA } from "../../api/endPoints";
+import { useDispatch } from "react-redux";
+import { addAoCarrinho } from "../../store/carrinho";
 
 const Comentario = () => (
   <Grid item>
@@ -33,6 +35,7 @@ const Comentario = () => (
 const Produto = () => {
   const { uuid } = useParams();
   const [dados, setDados] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchDados() {
@@ -42,6 +45,10 @@ const Produto = () => {
     }
     fetchDados();
   }, [uuid]);
+
+  function handleClickCarrinho() {
+    dispatch(addAoCarrinho(dados.uuid));
+  }
 
   const mobile = useMediaQuery("(max-width: 700px)");
   return (
@@ -93,7 +100,11 @@ const Produto = () => {
                     })}
                   </sub>
                 </div>
-                <Botao variant="contained" amarelo="y">
+                <Botao
+                  variant="contained"
+                  amarelo="y"
+                  onClick={handleClickCarrinho}
+                >
                   <p>adicionar ao carrinho</p>
                 </Botao>
               </Box>
