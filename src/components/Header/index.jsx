@@ -80,7 +80,7 @@ const Header = () => {
       badgeContent={quantidadeProdutos}
       color={mobile ? "primary" : "secondary"}
     >
-      <Link to="/">
+      <Link to="/carrinho">
         <ShoppingCartOutlinedIcon sx={{ color: "#333" }} />
       </Link>
     </Badge>

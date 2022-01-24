@@ -33,7 +33,6 @@ const ListaProdutosCategoria = () => {
       );
 
       setData(data);
-      console.log(data);
     }
     fetchProdutos();
   }, [categoria]);

@@ -10,6 +10,7 @@ import ProtectedRoute from "./helper/protectedRouter";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loginAutomatico } from "./store/user";
+import Carrinho from "./pages/Carrinho";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
           <Route path="/conta" element={<UserPage />} />
         </Route>
         <Route path="/login/*" element={<Autenticacao />} />
+        <Route path="/carrinho" element={<Carrinho />} />
 
         <Route path="*" element={<Home />} />
       </Routes>

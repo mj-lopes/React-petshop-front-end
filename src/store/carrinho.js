@@ -8,13 +8,24 @@ const slice = createSlice({
   },
   reducers: {
     addAoCarrinho(state, action) {
+      // Verifica se já existe o item no carrinho
       const quantidade = state.listaProdutos.filter(
         (i) => i.produto === action.payload,
       ).length;
-      state.listaProdutos.push({
-        produto: action.payload,
-        quantidade: quantidade + 1,
-      });
+
+      // Se existir, incrementa a quantidade, se não, add o registro
+      if (quantidade) {
+        state.listaProdutos.forEach((item, index, arr) => {
+          if (item.produto === action.payload) {
+            arr[index].quantidade += 1;
+          }
+        });
+      } else {
+        state.listaProdutos.push({
+          produto: action.payload,
+          quantidade: 1,
+        });
+      }
     },
     removeDoCarrinho(state, action) {
       state.listaProdutos = removeFromArray(
