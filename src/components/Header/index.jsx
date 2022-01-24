@@ -30,6 +30,9 @@ const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const navigator = useNavigate();
   const user = useSelector(({ usuario }) => usuario?.data);
+  const quantidadeProdutos = useSelector(
+    ({ carrinho }) => carrinho.listaProdutos.length,
+  );
   const validationSchema = yup.object({
     query: yup
       .string("Escreva um valor chave para a pesquisa")
@@ -73,7 +76,10 @@ const Header = () => {
   );
 
   const carrinho = (mobile) => (
-    <Badge badgeContent={2} color={mobile ? "primary" : "secondary"}>
+    <Badge
+      badgeContent={quantidadeProdutos}
+      color={mobile ? "primary" : "secondary"}
+    >
       <Link to="/">
         <ShoppingCartOutlinedIcon sx={{ color: "#333" }} />
       </Link>
