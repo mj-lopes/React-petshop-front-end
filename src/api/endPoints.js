@@ -66,3 +66,12 @@ export function GET_PRODUCTS_FROM_SEARCH(query) {
     },
   };
 }
+
+export function GET_PRODUCT_BY_UUID(uuid) {
+  return {
+    url: BASE_END_POINT + "/product/" + uuid,
+    options: {
+      method: "GET",
+    },
+  };
+}
