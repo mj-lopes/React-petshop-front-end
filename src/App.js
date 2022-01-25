@@ -21,25 +21,27 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/busca/:query" element={<BuscaPorQuery />} />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/busca/:query" element={<BuscaPorQuery />} />
 
-        <Route path="/produto/:uuid" element={<Produto />} />
-        <Route path="/produtos" element={<ListaProdutosCategoria />} />
-        <Route
-          path="/produtos/:categoria"
-          element={<ListaProdutosCategoria />}
-        />
+          <Route path="/produto/:uuid" element={<Produto />} />
+          <Route path="/produtos" element={<ListaProdutosCategoria />} />
+          <Route
+            path="/produtos/:categoria"
+            element={<ListaProdutosCategoria />}
+          />
 
-        <Route to="/" element={<ProtectedRoute />}>
-          <Route path="/conta" element={<UserPage />} />
-        </Route>
-        <Route path="/login/*" element={<Autenticacao />} />
-        <Route path="/carrinho" element={<Carrinho />} />
+          <Route to="/" element={<ProtectedRoute />}>
+            <Route path="/conta" element={<UserPage />} />
+          </Route>
+          <Route path="/login/*" element={<Autenticacao />} />
+          <Route path="/carrinho" element={<Carrinho />} />
 
-        <Route path="*" element={<Home />} />
-      </Routes>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );

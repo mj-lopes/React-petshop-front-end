@@ -22,7 +22,6 @@ const ProdutoCarrinho = ({ produto }) => {
       const dado = await fetch(url, options).then((r) => r.json());
 
       setDadosProduto(dado);
-      console.log(dado);
     }
 
     fetch_produto(produto.produto);
@@ -39,16 +38,27 @@ const ProdutoCarrinho = ({ produto }) => {
     return (
       <ListItem
         key={dadosProduto.uuid}
-        sx={{ backgroundColor: "#fff", borderRadius: "10px" }}
+        sx={{
+          "& .MuiListItemSecondaryAction-root": {
+            opacity: "0",
+            transition: ".2s",
+          },
+          "&:hover .MuiListItemSecondaryAction-root": {
+            opacity: "1",
+            transition: ".3s",
+          },
+        }}
         secondaryAction={
           <>
             <IconButton
               onClick={() => dispatch(removeDoCarrinho(dadosProduto.uuid))}
+              sx={{ marginTop: "-85px" }}
             >
               <RemoveCircleOutlineOutlinedIcon />
             </IconButton>
             <IconButton
               onClick={() => dispatch(addAoCarrinho(dadosProduto.uuid))}
+              sx={{ marginTop: "-85px" }}
             >
               <AddCircleOutlineOutlinedIcon />
             </IconButton>
