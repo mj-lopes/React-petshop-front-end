@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 
 const Subtitulo = styled(Typography)(() => ({
   position: "relative",
-  margin: ".5rem 0",
 
   fontSize: "clamp(1rem, 10vw, 2rem)",
   color: "#333",

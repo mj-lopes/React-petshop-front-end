@@ -8,15 +8,18 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Botao, Subtitulo, Texto, Titulo } from "../../components";
+import { Botao, Subtitulo, Texto, Titulo, Input } from "../../components";
 import ProdutoCarrinho from "./produtoCarrinho";
 
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const wrap = useMediaQuery("(max-width: 830px)");
+  const [cupom, setCupom] = useState("");
+  const [desconto, setDesconto] = useState(false);
 
   function converterParaStringPreco(num, taxaPrazo = 1) {
-    const valor = num * taxaPrazo;
+    let valor = num * taxaPrazo;
+    valor *= desconto ? 0.9 : 1;
     return valor.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
@@ -31,6 +34,13 @@ const Carrinho = () => {
     return preco;
   }
 
+  function handleSubmitCupom(e) {
+    e.preventDefault();
+    cupom.toLocaleLowerCase() === "react10"
+      ? setDesconto(true)
+      : setDesconto(false);
+  }
+
   return (
     <Container>
       <Titulo>Carrinho</Titulo>
@@ -41,7 +51,7 @@ const Carrinho = () => {
           sx={{ backgroundColor: "#fff", borderRadius: "6px" }}
           padding={2}
         >
-          <Subtitulo>Produto e Cupom</Subtitulo>
+          <Subtitulo my={1}>Produtos</Subtitulo>
 
           <List>
             {listaProdutos.map((item) => {
@@ -57,7 +67,35 @@ const Carrinho = () => {
               );
             })}
           </List>
+          <Subtitulo my={2}>Cupom</Subtitulo>
+
+          <form
+            style={{
+              display: "flex",
+              alignContent: "center",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}
+            onSubmit={(e) => handleSubmitCupom(e)}
+          >
+            <Input
+              variant={"outlined"}
+              value={cupom}
+              onChange={({ target }) => setCupom(target.value)}
+              label="Ensira o código do cupom"
+              sx={{ flex: "1 1 300px", borderRadius: "0" }}
+            />
+            <Botao
+              branco="y"
+              variant="outlined"
+              sx={{ flex: "1", maxWidth: "100px" }}
+              type="submit"
+            >
+              Aplicar
+            </Botao>
+          </form>
         </Grid>
+
         <Grid
           item
           sx={{

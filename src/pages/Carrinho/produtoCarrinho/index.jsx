@@ -30,7 +30,6 @@ const ProdutoCarrinho = ({ dadosProduto, quantidade }) => {
             <IconButton
               onClick={() => dispatch(removerProduto(dadosProduto.uuid))}
               sx={{ marginTop: "-85px" }}
-              color="primary"
             >
               <RemoveCircleOutlineOutlinedIcon />
             </IconButton>
