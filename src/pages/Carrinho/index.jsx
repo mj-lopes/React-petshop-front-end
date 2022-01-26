@@ -5,8 +5,8 @@ import { Container, Divider, Grid, List } from "@mui/material";
 import { Subtitulo, Titulo } from "../../components";
 
 import CupomForm from "./CupomForm";
-import ProdutoCarrinho from "./produtoCarrinho";
-import ResumoCompra from "./resumoCompra";
+import ProdutoCarrinho from "./ProdutoCarrinho";
+import ResumoCompra from "./ResumoCompra";
 import Vazio from "./Vazio";
 
 const Carrinho = () => {

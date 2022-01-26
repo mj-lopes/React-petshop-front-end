@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import Titulo from "./Titulo";
 import Botao from "./Botao";
 import Subtitulo from "./Subtitulo";
-import Texto from "./texto";
+import Texto from "./Texto";
 import Input from "./Input";
 
 export {

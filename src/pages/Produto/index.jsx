@@ -1,4 +1,13 @@
-import { Box, Container, Divider, Grid, useMediaQuery } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Container,
+  Divider,
+  Grid,
+  Snackbar,
+  useMediaQuery,
+  Slide,
+} from "@mui/material";
 import { Botao, Titulo } from "../../components/";
 import Img from "../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
 import PegadasBG from "../../asserts/paw-bg.png";
@@ -8,6 +17,7 @@ import { useEffect, useState } from "react";
 import { GET_PRODUCT_DATA } from "../../api/endPoints";
 import { useDispatch } from "react-redux";
 import { addProduto } from "../../store/carrinho";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const Comentario = () => (
   <Grid item>
@@ -36,6 +46,11 @@ const Produto = () => {
   const { uuid } = useParams();
   const [dados, setDados] = useState([]);
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+
+  const handleClose = (event, reason) => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     async function fetchDados() {
@@ -47,6 +62,15 @@ const Produto = () => {
   }, [uuid]);
 
   function handleClickCarrinho() {
+    if (open) {
+      setOpen(false);
+      setTimeout(() => {
+        setOpen(true);
+      }, 300);
+    } else {
+      setOpen(true);
+    }
+
     dispatch(addProduto(dados.uuid));
   }
 
@@ -220,8 +244,27 @@ const Produto = () => {
           ></img>
         </Grid>
       </Grid>
+      <Snackbar
+        open={open}
+        severity="success"
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        TransitionComponent={TransitionDown}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert
+          severity="success"
+          variant="filled"
+          icon={<AddShoppingCartIcon fontSize="inherit" />}
+        >
+          Produto adicionado ao carrinho
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
+function TransitionDown(props) {
+  return <Slide {...props} direction="down" />;
+}
 
 export default Produto;
