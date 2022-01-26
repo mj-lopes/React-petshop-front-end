@@ -6,6 +6,7 @@ import {
   List,
   useMediaQuery,
 } from "@mui/material";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Botao, Subtitulo, Texto, Titulo } from "../../components";
 import ProdutoCarrinho from "./produtoCarrinho";
@@ -13,7 +14,8 @@ import ProdutoCarrinho from "./produtoCarrinho";
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const wrap = useMediaQuery("(max-width: 830px)");
-
+  const [valorSomarProdutos, setValorSomarProdutos] = useState([]);
+  console.log(valorSomarProdutos);
   return (
     <Container>
       <Titulo>Carrinho</Titulo>
@@ -28,7 +30,13 @@ const Carrinho = () => {
 
           <List>
             {listaProdutos.map((produto) => {
-              return <ProdutoCarrinho produto={produto} key={produto.uuid} />;
+              return (
+                <ProdutoCarrinho
+                  key={produto.uuid}
+                  produto={produto}
+                  setValor={setValorSomarProdutos}
+                />
+              );
             })}
           </List>
         </Grid>

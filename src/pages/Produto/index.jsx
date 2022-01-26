@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GET_PRODUCT_DATA } from "../../api/endPoints";
 import { useDispatch } from "react-redux";
-import { addAoCarrinho } from "../../store/carrinho";
+import { addProduto } from "../../store/carrinho";
 
 const Comentario = () => (
   <Grid item>
@@ -47,7 +47,7 @@ const Produto = () => {
   }, [uuid]);
 
   function handleClickCarrinho() {
-    dispatch(addAoCarrinho(dados.uuid));
+    dispatch(addProduto(dados.uuid));
   }
 
   const mobile = useMediaQuery("(max-width: 700px)");
