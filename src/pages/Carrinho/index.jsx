@@ -14,8 +14,23 @@ import ProdutoCarrinho from "./produtoCarrinho";
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const wrap = useMediaQuery("(max-width: 830px)");
-  const [valorSomarProdutos, setValorSomarProdutos] = useState([]);
-  console.log(valorSomarProdutos);
+
+  function converterParaStringPreco(num, taxaPrazo = 1) {
+    const valor = num * taxaPrazo;
+    return valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+
+  function pegarOPrecoDeTodosProdutos() {
+    let preco = 0;
+    for (const item of listaProdutos) {
+      preco += item.quantidade * item.produto.preco;
+    }
+    return preco;
+  }
+
   return (
     <Container>
       <Titulo>Carrinho</Titulo>
@@ -29,12 +44,12 @@ const Carrinho = () => {
           <Subtitulo>Produto e Cupom</Subtitulo>
 
           <List>
-            {listaProdutos.map((produto) => {
+            {listaProdutos.map((item) => {
               return (
                 <ProdutoCarrinho
-                  key={produto.uuid}
-                  produto={produto}
-                  setValor={setValorSomarProdutos}
+                  key={item.uuid}
+                  dadosProduto={item.produto}
+                  quantidade={item.quantidade}
                 />
               );
             })}
@@ -61,7 +76,9 @@ const Carrinho = () => {
             marginTop={4}
           >
             <Texto fontSize={"14px"}>Valor dos Produtos:</Texto>
-            <Texto fontWeight={"bold"}>adasd</Texto>
+            <Texto fontWeight={"bold"}>
+              {converterParaStringPreco(pegarOPrecoDeTodosProdutos())}
+            </Texto>
           </Box>
           <Divider flexItem sx={{ my: 1 }} />
 
@@ -71,11 +88,14 @@ const Carrinho = () => {
           >
             <Box display={"flex"} justifyContent={"space-between"}>
               <Texto fontSize={"14px"}>Total à prazo:</Texto>
-              <Texto fontWeight={"bold"}>adasd</Texto>
+              <Texto fontWeight={"bold"}>
+                {converterParaStringPreco(pegarOPrecoDeTodosProdutos(), 1.2)}
+              </Texto>
             </Box>
 
             <Texto fontSize={"14px"} textAlign="center">
-              (em até 12x de R$ 43,55 sem juros)
+              (em até 3x de{" "}
+              {converterParaStringPreco(pegarOPrecoDeTodosProdutos() / 3, 1.2)})
             </Texto>
           </Box>
 

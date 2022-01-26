@@ -12,19 +12,7 @@ const slice = createSlice({
       state.listaProdutos = action.payload;
     },
     removeDoCarrinho(state, action) {
-      // Busca pelo item
-      state.listaProdutos.forEach((item, index, arr) => {
-        if (item.produto === action.payload) {
-          const quantidade = arr[index].quantidade;
-          // Se a quantidade for igual a um, o item é excluído do array
-          if (quantidade === 1) {
-            state.listaProdutos = arr.filter((_, i) => i !== index);
-          } else {
-            // Do contrário, a sua quantidade é decressida em 1
-            arr[index].quantidade -= 1;
-          }
-        }
-      });
+      state.listaProdutos = action.payload;
     },
   },
 });
@@ -68,5 +56,31 @@ export const addProduto = (uuid) => async (dispatch, getState) => {
       console.log("Ocorreu um erro ao fetch");
     }
   }
+};
+
+export const removerProduto = (uuid) => async (dispatch, getState) => {
+  const { carrinho } = getState((state) => state.carrinho);
+  const lista = [...carrinho.listaProdutos];
+
+  const listaAlterada = lista
+    .map((item) => {
+      if (item.uuid === uuid) {
+        const quantidade = item.quantidade;
+
+        if (quantidade === 1) {
+          return null;
+        } else {
+          return {
+            produto: item.produto,
+            uuid: item.uuid,
+            quantidade: quantidade - 1,
+          };
+        }
+      }
+      return item;
+    })
+    .filter((i) => i);
+
+  dispatch(removeDoCarrinho(listaAlterada));
 };
 export default slice.reducer;

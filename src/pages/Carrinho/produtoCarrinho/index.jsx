@@ -1,18 +1,16 @@
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 import {
   IconButton,
   ListItem,
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
-import Img from "../../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
-import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
-import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
-import { useCallback, useEffect, useState } from "react";
-import { GET_PRODUCT_BY_UUID } from "../../../api/endPoints";
 import { useDispatch } from "react-redux";
-import { addAoCarrinho, removeDoCarrinho } from "../../../store/carrinho";
+import Img from "../../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
+import { addProduto, removerProduto } from "../../../store/carrinho";
 
-const ProdutoCarrinho = ({ dadosProduto, setValor }) => {
+const ProdutoCarrinho = ({ dadosProduto, quantidade }) => {
   const dispatch = useDispatch();
 
   function converterParaStringPreco(stringValor) {
@@ -26,26 +24,18 @@ const ProdutoCarrinho = ({ dadosProduto, setValor }) => {
     return (
       <ListItem
         key={dadosProduto.uuid}
-        sx={{
-          "& .MuiListItemSecondaryAction-root": {
-            opacity: "0",
-            transition: ".2s",
-          },
-          "&:hover .MuiListItemSecondaryAction-root": {
-            opacity: "1",
-            transition: ".3s",
-          },
-        }}
+        sx={{ flexWrap: "wrap" }}
         secondaryAction={
           <>
             <IconButton
-              onClick={() => dispatch(removeDoCarrinho(dadosProduto.uuid))}
+              onClick={() => dispatch(removerProduto(dadosProduto.uuid))}
               sx={{ marginTop: "-85px" }}
+              color="primary"
             >
               <RemoveCircleOutlineOutlinedIcon />
             </IconButton>
             <IconButton
-              onClick={() => dispatch(addAoCarrinho(dadosProduto.uuid))}
+              onClick={() => dispatch(addProduto(dadosProduto.uuid))}
               sx={{ marginTop: "-85px" }}
             >
               <AddCircleOutlineOutlinedIcon />
@@ -53,7 +43,7 @@ const ProdutoCarrinho = ({ dadosProduto, setValor }) => {
           </>
         }
       >
-        <ListItemAvatar sx={{ maxWidth: "100px", mx: 2 }}>
+        <ListItemAvatar sx={{ maxWidth: "clamp(20%, 25vw, 25%)", mx: 2 }}>
           <img
             src={dadosProduto.imgurl || Img}
             alt={dadosProduto.nome || "Imagem placeholder do produto"}
@@ -61,7 +51,8 @@ const ProdutoCarrinho = ({ dadosProduto, setValor }) => {
         </ListItemAvatar>
         <ListItemText
           primary={dadosProduto.nome}
-          secondary={`${dadosProduto.quantidade}X - ${converterParaStringPreco(
+          sx={{ flexBasis: "300px" }}
+          secondary={`${quantidade}X - ${converterParaStringPreco(
             dadosProduto.preco,
           )}`}
         />
