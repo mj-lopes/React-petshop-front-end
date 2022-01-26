@@ -5,7 +5,7 @@ import Produto from "./pages/Produto";
 import ListaProdutosCategoria from "./pages/ProdutosCategoria";
 import Autenticacao from "./pages/Autenticacao";
 import BuscaPorQuery from "./pages/Busca";
-import UserPage from "./pages/UserPage";
+import PaginaUsuario from "./pages/PaginaUsuario";
 import ProtectedRoute from "./helper/protectedRouter";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -34,7 +34,7 @@ function App() {
           />
 
           <Route to="/" element={<ProtectedRoute />}>
-            <Route path="/conta" element={<UserPage />} />
+            <Route path="/conta" element={<PaginaUsuario />} />
           </Route>
           <Route path="/login/*" element={<Autenticacao />} />
           <Route path="/carrinho" element={<Carrinho />} />

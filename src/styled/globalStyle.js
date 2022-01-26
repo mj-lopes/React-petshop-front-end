@@ -26,7 +26,7 @@ const InputGlobalStyle = (
   <GlobalStyles
     styles={{
       body: {
-        backgroundColor: "#eceff1",
+        backgroundColor: "#f4f5f6",
         fontFamily: "Sen, Helvetica, Sans-serif",
         overflowX: "hidden",
       },
