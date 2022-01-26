@@ -24,7 +24,7 @@ const ProdutoCarrinho = ({ dadosProduto, quantidade }) => {
     return (
       <ListItem
         key={dadosProduto.uuid}
-        sx={{ flexWrap: "wrap" }}
+        sx={{ flexWrap: "wrap", my: 1 }}
         secondaryAction={
           <>
             <IconButton

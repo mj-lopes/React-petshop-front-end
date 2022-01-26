@@ -46,11 +46,14 @@ const Carrinho = () => {
           <List>
             {listaProdutos.map((item) => {
               return (
-                <ProdutoCarrinho
-                  key={item.uuid}
-                  dadosProduto={item.produto}
-                  quantidade={item.quantidade}
-                />
+                <>
+                  <Divider variant="middle" flexItem />
+                  <ProdutoCarrinho
+                    key={item.uuid}
+                    dadosProduto={item.produto}
+                    quantidade={item.quantidade}
+                  />
+                </>
               );
             })}
           </List>
@@ -61,7 +64,7 @@ const Carrinho = () => {
             backgroundColor: "white",
             borderRadius: "6px",
             position: wrap ? "static" : "sticky",
-            top: "32px",
+            top: "36px",
           }}
           padding={2}
           flex={"1 1 350px"}
