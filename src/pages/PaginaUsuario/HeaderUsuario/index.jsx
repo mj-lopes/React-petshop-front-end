@@ -1,6 +1,8 @@
 import { Box, IconButton } from "@mui/material";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import styled from "@emotion/styled";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../store/user";
 
 const WrapperBtnLogout = styled(({ ...props }) => (
   <IconButton size="large" {...props} />
@@ -17,13 +19,14 @@ const WrapperBtnLogout = styled(({ ...props }) => (
 }));
 
 const HeaderUsuario = ({ usuario }) => {
+  const dispatch = useDispatch();
   return (
     <Box display={"flex"} justifyContent={"space-between"} my={4}>
       <h1>Bem vindo, {usuario.nome}!</h1>
       <Box>
         <WrapperBtnLogout
           aria-label="botao logout"
-          onClick={() => alert(usuario.nome)}
+          onClick={() => dispatch(logout())}
         >
           <LogoutOutlinedIcon />
         </WrapperBtnLogout>

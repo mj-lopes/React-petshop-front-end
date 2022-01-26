@@ -23,10 +23,16 @@ const slice = createSlice({
       state.data = null;
       state.error = action.payload;
     },
+    logoutUsuario(state) {
+      state.loading = false;
+      state.data = null;
+      state.error = null;
+    },
   },
 });
 
-export const { fetchIniciado, fetchSucesso, fetchErro } = slice.actions;
+export const { fetchIniciado, fetchSucesso, fetchErro, logoutUsuario } =
+  slice.actions;
 export default slice.reducer;
 
 export const fetchUsuario = (usuario, senha) => async (dispatch) => {
@@ -50,4 +56,9 @@ export const loginAutomatico = () => async (dispatch, getState) => {
 
     return dispatch(fetchSucesso(dadosUsuario));
   } catch {}
+};
+
+export const logout = () => async (dispatch, getState) => {
+  dispatch(logoutUsuario());
+  window.localStorage.removeItem("token");
 };
