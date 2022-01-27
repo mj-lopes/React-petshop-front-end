@@ -7,6 +7,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Img from "../../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
 import { addProduto, removerProduto } from "../../../store/carrinho";
 
@@ -43,10 +44,12 @@ const ProdutoCarrinho = ({ dadosProduto, quantidade }) => {
         }
       >
         <ListItemAvatar sx={{ maxWidth: "clamp(20%, 25vw, 25%)", mx: 2 }}>
-          <img
-            src={dadosProduto.imgurl || Img}
-            alt={dadosProduto.nome || "Imagem placeholder do produto"}
-          />
+          <Link to={`../produto/${dadosProduto.uuid}`}>
+            <img
+              src={dadosProduto.imgurl || Img}
+              alt={dadosProduto.nome || "Imagem placeholder do produto"}
+            />
+          </Link>
         </ListItemAvatar>
         <ListItemText
           primary={dadosProduto.nome}
