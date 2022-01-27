@@ -1,25 +1,12 @@
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
-import {
-  IconButton,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-} from "@mui/material";
+import { IconButton, ListItem } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import Img from "../../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
+import { ProdutoListaItem } from "../../../components";
 import { addProduto, removerProduto } from "../../../store/carrinho";
 
 const ProdutoCarrinho = ({ dadosProduto, quantidade }) => {
   const dispatch = useDispatch();
-
-  function converterParaStringPreco(stringValor) {
-    return stringValor.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-  }
 
   if (dadosProduto)
     return (
@@ -43,21 +30,7 @@ const ProdutoCarrinho = ({ dadosProduto, quantidade }) => {
           </>
         }
       >
-        <ListItemAvatar sx={{ maxWidth: "clamp(20%, 25vw, 25%)", mx: 2 }}>
-          <Link to={`../produto/${dadosProduto.uuid}`}>
-            <img
-              src={dadosProduto.imgurl || Img}
-              alt={dadosProduto.nome || "Imagem placeholder do produto"}
-            />
-          </Link>
-        </ListItemAvatar>
-        <ListItemText
-          primary={dadosProduto.nome}
-          sx={{ flexBasis: "300px" }}
-          secondary={`${quantidade}X - ${converterParaStringPreco(
-            dadosProduto.preco,
-          )}`}
-        />
+        <ProdutoListaItem dadosProduto={dadosProduto} quantidade={quantidade} />
       </ListItem>
     );
   return null;

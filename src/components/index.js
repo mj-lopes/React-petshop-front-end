@@ -8,6 +8,7 @@ import Botao from "./Botao";
 import Subtitulo from "./Subtitulo";
 import Texto from "./Texto";
 import Input from "./Input";
+import ProdutoListaItem from "./ProdutoListaItem";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   Botao,
   Texto,
   Input,
+  ProdutoListaItem,
 };

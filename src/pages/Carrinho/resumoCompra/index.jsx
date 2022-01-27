@@ -1,7 +1,7 @@
 import { Box, Divider, Grid, useMediaQuery } from "@mui/material";
 import { Botao, Subtitulo, Texto } from "../../../components";
 
-const ResumoCompra = ({ desconto, listaProdutos }) => {
+const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
   const wrap = useMediaQuery("(max-width: 830px)");
 
   function converterParaStringPreco(num, taxaPrazo = 1) {
@@ -66,7 +66,12 @@ const ResumoCompra = ({ desconto, listaProdutos }) => {
       <Botao amarelo="y" sx={{ width: "100%", marginBottom: "1rem" }}>
         Continuar comprando
       </Botao>
-      <Botao variant="outlined" branco="y" sx={{ width: "100%" }}>
+      <Botao
+        variant="outlined"
+        branco="y"
+        sx={{ width: "100%" }}
+        onClick={handleFinalizarCompra}
+      >
         Ir para o Pagamento
       </Botao>
     </Grid>

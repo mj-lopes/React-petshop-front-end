@@ -16,7 +16,6 @@ const BuscaPorQuery = () => {
       );
 
       setData(data);
-      console.log(data);
     }
     fetchProdutos();
   }, [query]);

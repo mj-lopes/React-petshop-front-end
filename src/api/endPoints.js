@@ -75,3 +75,32 @@ export function GET_PRODUCT_BY_UUID(uuid) {
     },
   };
 }
+
+export function SAVE_NEW_PURCHASE(body) {
+  const token = JSON.parse(window.localStorage.getItem("token"));
+  return {
+    url: BASE_END_POINT + "/purchase",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function GET_ALL_PURCHASES() {
+  const token = JSON.parse(window.localStorage.getItem("token"));
+  return {
+    url: BASE_END_POINT + "/purchase",
+    options: {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
