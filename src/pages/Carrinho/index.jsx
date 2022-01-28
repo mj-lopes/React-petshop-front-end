@@ -13,11 +13,9 @@ import { SAVE_NEW_PURCHASE } from "../../api/endPoints";
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const comprador = useSelector((store) => store.usuario?.data);
-  const [cupom, setCupom] = useState("");
   const [temDesconto, setTemDesconto] = useState(false);
 
-  function handleSubmitCupom(e) {
-    e.preventDefault();
+  function handleSubmitCupom(cupom) {
     cupom.toLocaleLowerCase() === "react10"
       ? setTemDesconto(true)
       : setTemDesconto(false);
@@ -62,11 +60,7 @@ const Carrinho = () => {
           })}
         </List>
         <Subtitulo my={2}>Cupom</Subtitulo>
-        <CupomForm
-          cupom={cupom}
-          setCupom={setCupom}
-          handleSubmitCupom={handleSubmitCupom}
-        />
+        <CupomForm onSubmit={(cupom) => handleSubmitCupom(cupom)} />
       </Grid>
       <ResumoCompra
         desconto={temDesconto}

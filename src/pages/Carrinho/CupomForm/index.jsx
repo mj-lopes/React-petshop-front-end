@@ -1,22 +1,24 @@
-import { Botao, Input } from "../../../components";
+import { TextField } from "@mui/material";
+import { useState } from "react";
+import { Botao } from "../../../components";
+import { FormCupom } from "./style";
 
-const CupomForm = ({ cupom, setCupom, handleSubmitCupom }) => {
+const CupomForm = ({ onSubmit }) => {
+  const [cupom, setCupom] = useState("");
+
   return (
-    <form
-      style={{
-        display: "flex",
-        alignContent: "center",
-        flexWrap: "wrap",
-        gap: "1rem",
+    <FormCupom
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(cupom);
       }}
-      onSubmit={(e) => handleSubmitCupom(e)}
     >
-      <Input
+      <TextField
         variant={"outlined"}
         value={cupom}
         onChange={({ target }) => setCupom(target.value)}
         label="Ensira o código do cupom"
-        sx={{ flex: "1 1 300px", borderRadius: "0" }}
+        sx={{ flex: "1 1 300px" }}
       />
       <Botao
         branco="y"
@@ -26,7 +28,7 @@ const CupomForm = ({ cupom, setCupom, handleSubmitCupom }) => {
       >
         Aplicar
       </Botao>
-    </form>
+    </FormCupom>
   );
 };
 
