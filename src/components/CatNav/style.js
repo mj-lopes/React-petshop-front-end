@@ -6,11 +6,11 @@ const NavWrapper = styled("div")(({ mobile }) => ({
 
 const NavList = styled("ul")(({ mobile }) => ({
   maxWidth: "1200px",
-  display: "flex",
-  justifyContent: "center",
-  gap: mobile ? "0" : "2rem",
   margin: "0 auto",
-  padding: ".5rem",
+
+  display: "flex",
+  justifyContent: "space-around",
+  gap: mobile ? "0" : "2rem",
 
   flexDirection: mobile ? "column" : "row",
 }));
@@ -20,11 +20,16 @@ const NavItem = styled("li")({
 });
 
 const NavTextItem = styled("p")(({ mobile }) => ({
+  padding: "1rem",
+  textAlign: "center",
+
   letterSpacing: "3px",
+  fontSize: "14px",
   color: "#333",
-  fontWeight: "bold",
+  fontWeight: "600",
+
   transition: ".3s",
-  padding: ".5rem",
+
   "&:hover": {
     color: mobile ? "#FFC100" : "white",
   },

@@ -16,15 +16,15 @@ const NavagacaoCategoria = ({ mobile, onClick }) => {
     <NavWrapper mobile={mobile}>
       <nav>
         <NavList mobile={mobile} onClick={onClick}>
-          {NavItemElement("/produtos/cachorro", "Cachorros", mobile)}
-          {NavItemElement("/produtos/gatos", "Gatos", mobile)}
-          {NavItemElement("/produtos/outros", "Outros Animais", mobile)}
+          {NavItemElement("/produtos/cachorro", "CACHORROS", mobile)}
+          {NavItemElement("/produtos/gatos", "GATOS", mobile)}
+          {NavItemElement("/produtos/outros", "OUTROS ANIMAIS", mobile)}
           {NavItemElement(
             "/produtos/acessorios_brinquedos",
-            "Acessórios e brinquedos",
+            "ACESSÓRIOS E BRINQUEDOS",
             mobile,
           )}
-          {NavItemElement("/produtos/remedios", "Medicação", mobile)}
+          {NavItemElement("/produtos/remedios", "MEDICAÇÃO", mobile)}
         </NavList>
       </nav>
     </NavWrapper>
