@@ -9,6 +9,10 @@ import ProdutoCarrinho from "./ProdutoCarrinho";
 import ResumoCompra from "./ResumoCompra";
 import Vazio from "./Vazio";
 import { SAVE_NEW_PURCHASE } from "../../api/endPoints";
+import {
+  ContainerListaProdutosCarrinho,
+  WrapperListaProdutosCarrinho,
+} from "./style";
 
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
@@ -36,13 +40,8 @@ const Carrinho = () => {
   }
 
   const Layout = () => (
-    <Grid container gap={2} my={4} flexWrap={"wrap-reverse"}>
-      <Grid
-        item
-        flex={"10 1 400px"}
-        sx={{ backgroundColor: "#fff", borderRadius: "6px" }}
-        padding={2}
-      >
+    <ContainerListaProdutosCarrinho>
+      <WrapperListaProdutosCarrinho>
         <Subtitulo my={1}>Produtos</Subtitulo>
 
         <List>
@@ -60,14 +59,16 @@ const Carrinho = () => {
           })}
         </List>
         <Subtitulo my={2}>Cupom</Subtitulo>
+
         <CupomForm onSubmit={(cupom) => handleSubmitCupom(cupom)} />
-      </Grid>
+      </WrapperListaProdutosCarrinho>
+
       <ResumoCompra
         desconto={temDesconto}
         listaProdutos={listaProdutos}
         handleFinalizarCompra={() => handleFinalizarCompra()}
       />
-    </Grid>
+    </ContainerListaProdutosCarrinho>
   );
 
   return (
