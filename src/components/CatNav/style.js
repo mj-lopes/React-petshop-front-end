@@ -23,7 +23,7 @@ const NavTextItem = styled("p")(({ mobile }) => ({
   padding: "1rem",
   textAlign: "center",
 
-  letterSpacing: "3px",
+  letterSpacing: "4px",
   fontSize: "14px",
   color: "#333",
   fontWeight: "600",

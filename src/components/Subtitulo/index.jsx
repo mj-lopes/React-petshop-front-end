@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Typography } from "@mui/material";
 
-const Subtitulo = styled(Typography)(() => ({
+const Subtitulo = styled((props) => <Typography {...props} />)(() => ({
   position: "relative",
 
   fontSize: "clamp(1rem, 10vw, 2rem)",
