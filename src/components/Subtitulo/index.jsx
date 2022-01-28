@@ -17,7 +17,7 @@ const Subtitulo = styled(Typography)(() => ({
 
     position: "absolute",
     left: "0px",
-    bottom: "3px",
+    top: "20px",
 
     backgroundColor: "#FFC100",
     borderRadius: "4px",

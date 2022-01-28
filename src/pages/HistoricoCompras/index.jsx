@@ -2,7 +2,7 @@ import { Box, Container, Divider, List, ListItem, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GET_PURCHASE } from "../../api/endPoints";
-import { ProdutoListaItem, Texto } from "../../components";
+import { ProdutoListaItem, Subtitulo, Texto } from "../../components";
 
 const HistoricoCompras = () => {
   const { uuid } = useParams("uuid");
@@ -104,10 +104,10 @@ const HistoricoCompras = () => {
           height={100}
           my={4}
         >
-          <h2>Total da compra:</h2>
-          <h2 style={{ alignSelf: "flex-end" }}>
+          <Subtitulo>Total da compra:</Subtitulo>
+          <Texto style={{ alignSelf: "flex-end" }} variant="h4">
             {converterParaStringPreco()}
-          </h2>
+          </Texto>
         </Box>
       </Container>
     );
