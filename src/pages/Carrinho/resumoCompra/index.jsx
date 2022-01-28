@@ -1,5 +1,10 @@
 import { Box, Divider, Grid, useMediaQuery } from "@mui/material";
 import { Botao, Subtitulo, Texto } from "../../../components";
+import {
+  GridItemResumoCompra,
+  WrapperValorAPrazoResumoCompra,
+  WrapperValorResumoCompra,
+} from "./style";
 
 const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
   const wrap = useMediaQuery("(max-width: 830px)");
@@ -22,34 +27,18 @@ const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
   }
 
   return (
-    <Grid
-      item
-      sx={{
-        backgroundColor: "white",
-        borderRadius: "6px",
-        position: wrap ? "static" : "sticky",
-        top: "36px",
-      }}
-      padding={2}
-      flex={"1 1 350px"}
-      alignSelf={"flex-end"}
-      maxHeight={350}
-    >
+    <GridItemResumoCompra wrap={wrap}>
       <Subtitulo>Resumo</Subtitulo>
-      <Box
-        display={"flex"}
-        justifyContent={"space-between"}
-        padding={"0px 8px"}
-        marginTop={4}
-      >
+      <WrapperValorResumoCompra>
         <Texto fontSize={"14px"}>Valor dos Produtos:</Texto>
         <Texto fontWeight={"bold"}>
           {converterParaStringPreco(pegarOPrecoDeTodosProdutos())}
         </Texto>
-      </Box>
+      </WrapperValorResumoCompra>
+
       <Divider flexItem sx={{ my: 1 }} />
 
-      <Box sx={{ backgroundColor: "#FAFAFB", padding: "8px" }} marginBottom={4}>
+      <WrapperValorAPrazoResumoCompra>
         <Box display={"flex"} justifyContent={"space-between"}>
           <Texto fontSize={"14px"}>Total à prazo:</Texto>
           <Texto fontWeight={"bold"}>
@@ -61,7 +50,7 @@ const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
           (em até 3x de{" "}
           {converterParaStringPreco(pegarOPrecoDeTodosProdutos() / 3, 1.2)})
         </Texto>
-      </Box>
+      </WrapperValorAPrazoResumoCompra>
 
       <Botao amarelo="y" sx={{ width: "100%", marginBottom: "1rem" }}>
         Continuar comprando
@@ -74,7 +63,7 @@ const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
       >
         Ir para o Pagamento
       </Botao>
-    </Grid>
+    </GridItemResumoCompra>
   );
 };
 
