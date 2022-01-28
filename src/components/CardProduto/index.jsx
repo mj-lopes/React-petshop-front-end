@@ -25,12 +25,12 @@ const CardProduto = ({ dados }) => {
   });
 
   return (
-    <WrapperCartao raised>
-      <Link to={`/produto/${uuid}`}>
-        <CardActionArea>
-          <CardHeader action={"☆4.9"} sx={{ margin: "0px" }} />
+    <CardActionArea>
+      <WrapperCartao raised>
+        <Link to={`/produto/${uuid}`}>
+          <CardHeader action={"★4.9"} sx={{ margin: "0px" }} />
           <CardImg image={imgurl || Product} component={"img"} />
-          <CardContent>
+          <CardContent sx={{ position: "absolute", bottom: "0" }}>
             <Typography paragraph textAlign={"center"} fontFamily={"Sen"}>
               {nome}
             </Typography>
@@ -40,9 +40,9 @@ const CardProduto = ({ dados }) => {
               <PrecoParcelado>até 3x de {precoParcelado}</PrecoParcelado>
             </PrecoAVista>
           </CardContent>
-        </CardActionArea>
-      </Link>
-    </WrapperCartao>
+        </Link>
+      </WrapperCartao>
+    </CardActionArea>
   );
 };
 
