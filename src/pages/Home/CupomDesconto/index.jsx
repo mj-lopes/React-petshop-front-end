@@ -2,11 +2,11 @@ import { Box, Divider, Typography, useMediaQuery } from "@mui/material";
 import { CupomWrapper, CupomCodigoWrapper, CupomTexto } from "./style";
 
 const Cupom = () => {
+  const orientacaoHorizontal = useMediaQuery("(min-width: 1050px)");
+  const quebraSmartphone = useMediaQuery("(min-width: 500px)");
+
   return (
-    <CupomWrapper
-      container
-      direction={useMediaQuery("(min-width: 1050px)") ? "row" : "column"}
-    >
+    <CupomWrapper container direction={orientacaoHorizontal ? "row" : "column"}>
       <Box textAlign={"center"}>
         <Typography variant="h4" paragraph maxWidth={500}>
           Você tem
@@ -22,19 +22,13 @@ const Cupom = () => {
       </Box>
 
       <Divider
-        orientation={
-          useMediaQuery("(min-width: 1050px)") ? "vertical" : "horizontal"
-        }
+        orientation={orientacaoHorizontal ? "vertical" : "horizontal"}
         flexItem
         variant="middle"
       />
 
-      <CupomCodigoWrapper
-        flexDirection={useMediaQuery("(min-width: 500px)") ? "row" : "column"}
-      >
-        <CupomTexto
-          maxWidth={useMediaQuery("(min-width: 500px)") ? 150 : "auto"}
-        >
+      <CupomCodigoWrapper flexDirection={quebraSmartphone ? "row" : "column"}>
+        <CupomTexto maxWidth={quebraSmartphone ? 150 : "auto"}>
           Ensira no carrinho de compras o código:
         </CupomTexto>
         <Box border={"3px dashed #FFC100"} padding={1}>

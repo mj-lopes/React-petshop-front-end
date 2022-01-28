@@ -8,6 +8,8 @@ const CupomWrapper = styled(Grid)((props) => ({
   padding: "24px 16px",
   gap: "3rem",
   alignItems: "center",
+  margin: "3rem 0",
+  boxShadow: "0 0 11px 3px #FFC100, 0 0 4px 1px #FFC100",
 }));
 
 const CupomCodigoWrapper = styled(Box)((props) => ({
