@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { Container, Box, Paper } from "@mui/material";
 import { useSelector } from "react-redux";
-import HeaderUsuario from "./HeaderUsuario";
-import { Texto, Titulo } from "../../components";
-import { GET_ALL_PURCHASES } from "../../api/endPoints";
 import { Link } from "react-router-dom";
+
+import HeaderUsuario from "./HeaderUsuario";
+import { GET_ALL_PURCHASES } from "../../api/endPoints";
+
+import { Container, Box } from "@mui/material";
+import { Texto, Titulo } from "../../components";
+import { CompraSpanSubtitulo, CompraSubtitulo, WrapperCompra } from "./style";
+
 const PaginaUsuario = () => {
   const usuario = useSelector(({ usuario }) => usuario.data);
   const [comprasData, setComprasData] = useState([]);
@@ -18,12 +22,13 @@ const PaginaUsuario = () => {
     fetchCompras();
   }, []);
 
-  const semHistorico = () => (
+  const SemHistorico = () => (
     <Texto variant="h4" align="center" my={10}>
       O histórico parece está vázio, suas compras efetuadas apareceram aqui :)
     </Texto>
   );
 
+  if (comprasData.length === 0) return <SemHistorico />;
   return (
     <Container>
       <HeaderUsuario usuario={usuario} />
@@ -31,18 +36,22 @@ const PaginaUsuario = () => {
         <Titulo my={2}>Ultimas Compras</Titulo>
         <div>
           {comprasData.map((compra) => (
-            <Paper elevation={2} sx={{ my: 2, padding: 2, display: "flex" }}>
-              <Link to={`/compra/${compra.uuid}`}>
-                <h4>Compra: {compra.uuid}</h4>
-              </Link>
-              <Texto style={{ flex: "1" }}>{compra.data}</Texto>
-              <Texto style={{ flex: "1", color: "#FFC100" }}>
-                <span style={{ fontWeight: "Bold", color: "#333" }}>
-                  Status:
-                </span>{" "}
-                {compra.status}
-              </Texto>
-            </Paper>
+            <Link to={`/compra/${compra.uuid}`}>
+              <WrapperCompra>
+                <CompraSubtitulo fontFamily={"monospace"}>
+                  <CompraSpanSubtitulo>Compra:</CompraSpanSubtitulo>{" "}
+                  {compra.uuid}
+                </CompraSubtitulo>
+                <CompraSubtitulo>
+                  <CompraSpanSubtitulo>Data:</CompraSpanSubtitulo>{" "}
+                  {new Date(compra.data).toLocaleDateString("pt-BR")}
+                </CompraSubtitulo>
+                <CompraSubtitulo style={{ color: "#FFC100" }}>
+                  <CompraSpanSubtitulo>Status:</CompraSpanSubtitulo>{" "}
+                  {compra.status}
+                </CompraSubtitulo>
+              </WrapperCompra>
+            </Link>
           ))}
         </div>
       </Box>
