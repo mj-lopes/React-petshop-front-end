@@ -12,7 +12,7 @@ const ProdutoListaItem = ({ dadosProduto, quantidade }) => {
 
   return (
     <>
-      <ListItemAvatar sx={{ maxWidth: "clamp(100px, 15vw, 250px)", mx: 2 }}>
+      <ListItemAvatar sx={{ maxWidth: "clamp(60px, 15vw, 150px)", mx: 2 }}>
         <Link to={`../produto/${dadosProduto.uuid}`}>
           <img
             src={dadosProduto.imgurl || Img}

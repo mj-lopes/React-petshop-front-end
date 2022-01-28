@@ -1,8 +1,8 @@
-import { Container, Divider, List, ListItem } from "@mui/material";
+import { Box, Container, Divider, List, ListItem, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GET_PURCHASE } from "../../api/endPoints";
-import { ProdutoListaItem } from "../../components";
+import { ProdutoListaItem, Texto } from "../../components";
 
 const HistoricoCompras = () => {
   const { uuid } = useParams("uuid");
@@ -19,17 +19,76 @@ const HistoricoCompras = () => {
     fetchDadosCompra();
   }, [uuid]);
 
+  function pegar_somatorio_valores() {
+    return produtosCompra.reduce((acc, atual) => {
+      return (acc += atual.preco * atual.quantidade);
+    }, 0);
+  }
+
+  function converterParaStringPreco(num) {
+    num = pegar_somatorio_valores();
+    return num.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+
   if (produtosCompra.length)
     return (
-      <Container>
-        <h4>{infoCompra.idcompra}</h4>
-        <h4>{infoCompra.status}</h4>
-        <h4>{new Date(infoCompra.data).toLocaleDateString("pt-BR")}</h4>
+      <Container sx={{ my: 2 }}>
+        <Box
+          display="flex"
+          justifyContent={"space-between"}
+          my={4}
+          flexWrap={"wrap"}
+          gap={2}
+        >
+          <Paper
+            sx={{
+              padding: "1rem",
+              boxShadow: "0 0 8px 1px #FFC100, 0 0 2px 1px #FFC100",
+              background: "white",
+              flex: "1 1 250px",
+            }}
+            elevation={0}
+          >
+            <h4>Compra:</h4>
+            <Texto>{infoCompra.idcompra}</Texto>
+          </Paper>
+          <Paper
+            sx={{
+              padding: "1rem",
+              border: "1px solid #FFC100",
+              boxShadow: "0 0 6px 0px #FFC100",
+              background: "white",
+              flex: "1 1 250px",
+            }}
+            elevation={0}
+          >
+            <h4>Status:</h4>
+            <Texto>{infoCompra.status}</Texto>
+          </Paper>
+          <Paper
+            sx={{
+              padding: "1rem",
+              border: "1px solid #FFC100",
+              boxShadow: "0 0 6px 0px #FFC100",
+              background: "white",
+              flex: "1 1 250px",
+            }}
+            elevation={0}
+          >
+            <h4>Data da compra:</h4>
+            <Texto>
+              {new Date(infoCompra.data).toLocaleDateString("pt-BR")}
+            </Texto>
+          </Paper>
+        </Box>
         <List>
           {produtosCompra.map((produto) => (
             <>
               <Divider variant="middle" flexItem />
-              <ListItem key={produto.uuid} sx={{ maxHeight: "300px" }}>
+              <ListItem key={produto.uuid} sx={{ my: 2 }}>
                 <ProdutoListaItem
                   dadosProduto={produto}
                   quantidade={produto.quantidade}
@@ -38,6 +97,18 @@ const HistoricoCompras = () => {
             </>
           ))}
         </List>
+        <Divider />
+        <Box
+          display="flex"
+          justifyContent={"space-between"}
+          height={100}
+          my={4}
+        >
+          <h2>Total da compra:</h2>
+          <h2 style={{ alignSelf: "flex-end" }}>
+            {converterParaStringPreco()}
+          </h2>
+        </Box>
       </Container>
     );
   return null;

@@ -26,7 +26,7 @@ const Carrinho = () => {
   async function handleFinalizarCompra() {
     const bodyRequest = listaProdutos.map((item) => {
       return {
-        idProduto: item.uuid,
+        uuid: item.uuid,
         quantidade: item.quantidade,
         preco: item.produto.preco,
       };
