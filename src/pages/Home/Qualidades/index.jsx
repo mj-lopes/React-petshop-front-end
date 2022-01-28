@@ -3,25 +3,25 @@ import Entrega from "../../../asserts/entrega.svg";
 import Cartao from "../../../asserts/cartao.svg";
 import Rapido from "../../../asserts/rapido.svg";
 import Suporte from "../../../asserts/suporte.svg";
+import {
+  QualidadeSubTexto,
+  QualidadeTexto,
+  WrapperQualidade,
+  WrapperQualidades,
+} from "./style";
 
 const Qualidade = (img, texto, sub) => {
   return (
     <Grid item paddingY={1}>
-      <Grid container gap={1} direction={"column"} alignItems={"center"}>
+      <WrapperQualidade>
         <img src={img} alt={texto}></img>
         <Box>
-          <p
-            style={{
-              fontSize: "14px",
-              textAlign: "center",
-              fontWeight: "bolder",
-            }}
-          >
+          <QualidadeTexto>
             {texto} <br />
-            <sub style={{ fontWeight: "normal" }}>{sub}</sub>
-          </p>
+            <QualidadeSubTexto>{sub}</QualidadeSubTexto>
+          </QualidadeTexto>
         </Box>
-      </Grid>
+      </WrapperQualidade>
     </Grid>
   );
 };
@@ -29,17 +29,7 @@ const Qualidade = (img, texto, sub) => {
 const Qualidades = () => {
   return (
     <Container>
-      <Grid
-        container
-        style={{
-          backgroundColor: "#FFC100",
-          marginTop: "-70px",
-          padding: "50px 16px 20px 16px",
-          borderRadius: "50px",
-        }}
-        justifyContent={"space-around"}
-        gap={2}
-      >
+      <WrapperQualidades>
         {Qualidade(Entrega, "Frete Gratis", "*Sujeito à condições")}
         {Qualidade(Cartao, "Até 3x sem juros", "*Compras acima de R$ 150")}
         {Qualidade(
@@ -52,7 +42,7 @@ const Qualidades = () => {
           "Atendimento por WhatsApp",
           "Seg. à sexta - 08hrs às 18hrs",
         )}
-      </Grid>
+      </WrapperQualidades>
     </Container>
   );
 };
