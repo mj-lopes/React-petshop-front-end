@@ -104,3 +104,17 @@ export function GET_ALL_PURCHASES() {
     },
   };
 }
+
+export function GET_PURCHASE(idcompra) {
+  const token = JSON.parse(window.localStorage.getItem("token"));
+  return {
+    url: BASE_END_POINT + "/purchase/" + idcompra,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}

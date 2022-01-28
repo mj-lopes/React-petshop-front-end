@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loginAutomatico } from "./store/user";
 import Carrinho from "./pages/Carrinho";
+import HistoricoCompra from "./pages/HistoricoCompras";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,8 +35,10 @@ function App() {
           />
 
           <Route to="/" element={<ProtectedRoute />}>
-            <Route path="/conta" element={<PaginaUsuario />} />
+            <Route path="/conta/*" element={<PaginaUsuario />} />
+            <Route path="/compra/:uuid" element={<HistoricoCompra />} />
           </Route>
+
           <Route path="/login/*" element={<Autenticacao />} />
           <Route path="/carrinho" element={<Carrinho />} />
 
