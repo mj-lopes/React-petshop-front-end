@@ -15,6 +15,7 @@ import ProdutoResumo from "./ProdutoResumo";
 import { Container, Divider, Grid, useMediaQuery } from "@mui/material";
 import Alerta from "../../components/Alerta";
 import { Loading } from "../../components";
+import { ProdutoResumoWrapper } from "./style";
 
 const Produto = () => {
   const { uuid } = useParams();
@@ -60,19 +61,12 @@ const Produto = () => {
             <Grid item sm={4}>
               <ProdutoImg imgUrl={dados.imgurl} nomeProduto={dados.nome} />
             </Grid>
-            <Grid
-              item
-              maxWidth={700}
-              display={"flex"}
-              flexDirection={"column"}
-              justifyContent={"space-between"}
-              flex={"1"}
-            >
+            <ProdutoResumoWrapper>
               <ProdutoResumo
                 addAoCarrinho={() => handleClickCarrinho()}
                 produtoInfo={dados}
               />
-            </Grid>
+            </ProdutoResumoWrapper>
           </Grid>
 
           <Divider sx={{ width: "100%", my: 6 }} component={"div"} />

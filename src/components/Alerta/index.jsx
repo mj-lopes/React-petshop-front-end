@@ -22,7 +22,7 @@ const Alerta = ({ tipo, mensagem, aberto }) => {
       severity="success"
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       TransitionComponent={TransitionDown}
-      autoHideDuration={4000}
+      autoHideDuration={3000}
       onClose={handleClose}
     >
       <Alert
