@@ -1,8 +1,27 @@
-import { Box, Container, Divider, List, ListItem, Paper } from "@mui/material";
+import {
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GET_PURCHASE } from "../../api/endPoints";
 import { ProdutoListaItem, Subtitulo, Texto } from "../../components";
+
+import {
+  Categoria,
+  ContainerHCompra,
+  ContainerValorTotalHCompra,
+  HeaderHCompra,
+  HeaderHCompraCard,
+  Informacao,
+} from "./style";
+import LocalShippingSharpIcon from "@mui/icons-material/LocalShippingSharp";
+import ShoppingBasketSharpIcon from "@mui/icons-material/ShoppingBasketSharp";
+import CalendarTodaySharpIcon from "@mui/icons-material/CalendarTodaySharp";
 
 const HistoricoCompras = () => {
   const { uuid } = useParams("uuid");
@@ -35,55 +54,49 @@ const HistoricoCompras = () => {
 
   if (produtosCompra.length)
     return (
-      <Container sx={{ my: 2 }}>
-        <Box
-          display="flex"
-          justifyContent={"space-between"}
-          my={4}
-          flexWrap={"wrap"}
-          gap={2}
-        >
-          <Paper
-            sx={{
-              padding: "1rem",
-              boxShadow: "0 0 8px 1px #FFC100, 0 0 2px 1px #FFC100",
-              background: "white",
-              flex: "1 1 250px",
-            }}
-            elevation={0}
-          >
-            <h4>Compra:</h4>
-            <Texto>{infoCompra.idcompra}</Texto>
-          </Paper>
-          <Paper
-            sx={{
-              padding: "1rem",
-              border: "1px solid #FFC100",
-              boxShadow: "0 0 6px 0px #FFC100",
-              background: "white",
-              flex: "1 1 250px",
-            }}
-            elevation={0}
-          >
-            <h4>Status:</h4>
-            <Texto>{infoCompra.status}</Texto>
-          </Paper>
-          <Paper
-            sx={{
-              padding: "1rem",
-              border: "1px solid #FFC100",
-              boxShadow: "0 0 6px 0px #FFC100",
-              background: "white",
-              flex: "1 1 250px",
-            }}
-            elevation={0}
-          >
-            <h4>Data da compra:</h4>
-            <Texto>
-              {new Date(infoCompra.data).toLocaleDateString("pt-BR")}
-            </Texto>
-          </Paper>
-        </Box>
+      <ContainerHCompra>
+        <HeaderHCompra>
+          <HeaderHCompraCard>
+            <ListItem>
+              <ListItemIcon>
+                <ShoppingBasketSharpIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                primary={<Categoria texto={"Compra"} />}
+                secondary={<Informacao texto={infoCompra.idcompra} />}
+              />
+            </ListItem>
+          </HeaderHCompraCard>
+          <HeaderHCompraCard>
+            <ListItem>
+              <ListItemIcon>
+                <LocalShippingSharpIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                primary={<Categoria texto={"Status"} />}
+                secondary={<Informacao texto={infoCompra.status} />}
+              />
+            </ListItem>
+          </HeaderHCompraCard>
+          <HeaderHCompraCard>
+            <ListItem>
+              <ListItemIcon>
+                <CalendarTodaySharpIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                primary={<Categoria texto={"Data"} />}
+                secondary={
+                  <Informacao
+                    texto={new Date(infoCompra.data).toLocaleDateString(
+                      "pt-BR",
+                    )}
+                  />
+                }
+              />
+            </ListItem>
+          </HeaderHCompraCard>
+        </HeaderHCompra>
+
         <List>
           {produtosCompra.map((produto) => (
             <>
@@ -97,19 +110,16 @@ const HistoricoCompras = () => {
             </>
           ))}
         </List>
+
         <Divider />
-        <Box
-          display="flex"
-          justifyContent={"space-between"}
-          height={100}
-          my={4}
-        >
+
+        <ContainerValorTotalHCompra>
           <Subtitulo>Total da compra:</Subtitulo>
           <Texto style={{ alignSelf: "flex-end" }} variant="h4">
             {converterParaStringPreco()}
           </Texto>
-        </Box>
-      </Container>
+        </ContainerValorTotalHCompra>
+      </ContainerHCompra>
     );
   return null;
 };
