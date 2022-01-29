@@ -10,6 +10,8 @@ import Texto from "./Texto";
 import Input from "./Input";
 import ProdutoListaItem from "./ProdutoListaItem";
 import Loading from "./Loading";
+import ProdutosCategoriaWrapper from "./ProdutosCategoriaWrapper";
+import ProdutosCategoriaGrid from "./ProdutosCategoriaGrid";
 
 export {
   Header,
@@ -24,4 +26,6 @@ export {
   Input,
   ProdutoListaItem,
   Loading,
+  ProdutosCategoriaWrapper,
+  ProdutosCategoriaGrid,
 };

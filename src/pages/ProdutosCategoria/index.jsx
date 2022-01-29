@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import { useParams } from "react-router";
-import { CardProduto, Titulo } from "../../components";
+import {
+  CardProduto,
+  ProdutosCategoriaGrid,
+  ProdutosCategoriaWrapper,
+  Titulo,
+} from "../../components";
 import { GET_PRODUCTS_FROM_CATEGORY } from "../../api/endPoints";
 
 const tituloCategoria = (cat) => {
@@ -38,16 +43,16 @@ const ListaProdutosCategoria = () => {
   }, [categoria]);
 
   return (
-    <Container sx={{ minHeight: "100vh" }}>
+    <ProdutosCategoriaWrapper>
       <Titulo>{tituloCategoria(categoria)}</Titulo>
-      <Grid container justifyContent={"space-around"} gap={5} marginBottom={6}>
+      <ProdutosCategoriaGrid>
         {data.map((produto) => (
           <Grid item>
             <CardProduto dados={produto} key={`produto - ${produto.uuid}`} />
           </Grid>
         ))}
-      </Grid>
-    </Container>
+      </ProdutosCategoriaGrid>
+    </ProdutosCategoriaWrapper>
   );
 };
 
