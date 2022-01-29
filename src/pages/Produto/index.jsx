@@ -14,6 +14,7 @@ import ProdutoResumo from "./ProdutoResumo";
 
 import { Container, Divider, Grid, useMediaQuery } from "@mui/material";
 import Alerta from "../../components/Alerta";
+import { Loading } from "../../components";
 
 const Produto = () => {
   const { uuid } = useParams();
@@ -30,6 +31,7 @@ const Produto = () => {
       const { url, options } = GET_PRODUCT_DATA(uuid);
       const dados = await fetch(url, options).then((resp) => resp.json());
       setDados(dados);
+
       setLoading(false);
     }
     fetchDados();
@@ -47,6 +49,8 @@ const Produto = () => {
 
     dispatch(addProduto(dados.uuid));
   }
+
+  if (loading) return <Loading />;
 
   return (
     <Container sx={{ my: 6 }}>

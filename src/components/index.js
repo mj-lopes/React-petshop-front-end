@@ -9,6 +9,7 @@ import Subtitulo from "./Subtitulo";
 import Texto from "./Texto";
 import Input from "./Input";
 import ProdutoListaItem from "./ProdutoListaItem";
+import Loading from "./Loading";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   Texto,
   Input,
   ProdutoListaItem,
+  Loading,
 };

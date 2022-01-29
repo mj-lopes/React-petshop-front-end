@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { WrapperLoading } from "./style";
+import { WrapperLoading, LoadingSvg } from "./style";
 
 function Loading() {
   const [step, setStep] = useState(0);
@@ -25,7 +25,7 @@ function Loading() {
 
   return (
     <WrapperLoading>
-      <Loading>
+      <LoadingSvg>
         <svg
           width="46"
           height="31"
@@ -102,7 +102,7 @@ function Loading() {
             />
           </g>
         </svg>
-      </Loading>
+      </LoadingSvg>
     </WrapperLoading>
   );
 }

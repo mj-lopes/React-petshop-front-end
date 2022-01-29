@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 
 const WrapperLoading = styled((props) => <div {...props} />)({
-  position: "absolute",
   width: "100%",
   height: "100vh",
   display: "flex",
   top: "0px",
   left: " 0px",
   zIndex: "1000",
+  background: "rgba(0, 0, 0, 0.2)",
 });
 
-const Loading = styled((props) => <div {...props} />)({
+const LoadingSvg = styled((props) => <div {...props} />)({
   margin: "auto",
   width: "80px",
   aspectRatio: "1/1",
@@ -25,4 +25,4 @@ const Loading = styled((props) => <div {...props} />)({
   paddingLeft: "5px",
 });
 
-export { Loading, WrapperLoading };
+export { LoadingSvg, WrapperLoading };
