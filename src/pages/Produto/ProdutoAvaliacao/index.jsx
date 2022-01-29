@@ -1,50 +1,28 @@
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
+import { Texto } from "../../../components";
+import {
+  GridAvaliacao,
+  SpanRecomendacaoAvaliacao,
+  TextoRecomendacaoAvaliacao,
+} from "./style";
 
 const ProdutoAvaliacao = ({ mobile }) => {
   return (
-    <Grid
-      display={"flex"}
-      flexWrap={"wrap-reverse"}
-      justifyContent={mobile ? "center" : "space-between"}
-      alignItems={"center"}
-      container
-      item
-      gap={2}
-    >
+    <GridAvaliacao mobile={mobile}>
       <Box flexBasis={300} textAlign={"center"}>
         <p style={{ fontWeight: "bold" }}>Avaliação dos Clientes</p>
-        <p style={{ fontSize: "3rem", lineHeight: 1.1 }}>4/5</p>
-        <p>3 avaliações</p>
+        <p style={{ fontSize: "3rem", lineHeight: 1.1 }}>4.9/5</p>
+        <Texto>4 avaliações</Texto>
       </Box>
       <Box>
-        <p
-          style={{
-            fontSize: "1.5rem",
-            textAlign: "center",
-            lineHeight: 1.1,
-          }}
-        >
-          <span
-            style={{
-              color: "#FFC100",
-              fontWeight: "bold",
-            }}
-          >
-            100%
-          </span>{" "}
-          dos clientes{" "}
-          <span
-            style={{
-              color: "#FFC100",
-              fontWeight: "bold",
-            }}
-          >
-            recomendam
-          </span>{" "}
-          este produto
-        </p>
+        <TextoRecomendacaoAvaliacao>
+          <SpanRecomendacaoAvaliacao>100%</SpanRecomendacaoAvaliacao> dos
+          clientes{" "}
+          <SpanRecomendacaoAvaliacao>recomendam</SpanRecomendacaoAvaliacao> este
+          produto
+        </TextoRecomendacaoAvaliacao>
       </Box>
-    </Grid>
+    </GridAvaliacao>
   );
 };
 export default ProdutoAvaliacao;
