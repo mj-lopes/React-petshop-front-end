@@ -1,5 +1,5 @@
 import { Divider, Grid } from "@mui/material";
-import { Titulo } from "../../../components";
+import { Texto, Titulo } from "../../../components";
 
 const ProdutoDescricaoCompleta = () => {
   return (
@@ -8,7 +8,7 @@ const ProdutoDescricaoCompleta = () => {
         <Titulo>Descrição</Titulo>
       </Grid>
       <Grid item>
-        <p>
+        <Texto>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
           maxime unde facilis nobis amet exercitationem, ducimus ipsum corrupti
           officia assumenda consequuntur, iste cumque sunt nesciunt numquam
@@ -25,7 +25,7 @@ const ProdutoDescricaoCompleta = () => {
           labore excepturi magnam illum. Eaque sunt laudantium deleniti
           repudiandae eius unde itaque magni consequuntur cumque aut maxime, cum
           harum voluptatum adipisci repellendus voluptas velit quidem?
-        </p>
+        </Texto>
       </Grid>
       <Divider sx={{ width: "100%", my: 3 }} />
     </Grid>

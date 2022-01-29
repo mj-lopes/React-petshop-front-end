@@ -18,7 +18,7 @@ export const Comentario = () => (
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend
       lacus sapien, in volutpat lorem semper ut. Suspendisse potenti. Aenean
       placerat lacus odio, cursus ullamcorper nisl lacinia et. Nam feugiat
-      aliquet mi et tincidunt.{" "}
+      aliquet mi et tincidunt.
     </p>
   </Grid>
 );
