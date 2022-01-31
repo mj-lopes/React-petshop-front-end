@@ -3,8 +3,11 @@ import Input from "../../../components/Input";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { POST_NEW_USER } from "../../../api/endPoints";
+import { useDispatch } from "react-redux";
+import { fetchUsuario } from "../../../store/user";
 
 const Cadastro = () => {
+  const dispatch = useDispatch();
   const validationSchema = yup.object({
     email: yup
       .string("Escreva o seu email")
@@ -44,11 +47,11 @@ const Cadastro = () => {
       };
       const { url, options } = POST_NEW_USER(formData);
 
-      const token = await fetch(url, options).then((response) => {
-        console.log(response);
-        response.json();
-      });
-      // dispatch(saveTokenAndLogin(token.uuid));
+      const { ok } = await fetch(url, options);
+
+      if (ok) {
+        dispatch(fetchUsuario(values.usuario, values.senha));
+      }
     },
   });
 
