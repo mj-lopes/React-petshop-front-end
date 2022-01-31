@@ -13,11 +13,13 @@ import {
   ContainerListaProdutosCarrinho,
   WrapperListaProdutosCarrinho,
 } from "./style";
+import { useNavigate } from "react-router-dom";
 
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const comprador = useSelector((store) => store.usuario?.data);
   const [temDesconto, setTemDesconto] = useState(false);
+  const navigate = useNavigate();
 
   function handleSubmitCupom(cupom) {
     cupom.toLocaleLowerCase() === "react10"
@@ -36,7 +38,8 @@ const Carrinho = () => {
     bodyRequest.unshift({ comprador: comprador.uuid });
 
     const { url, options } = SAVE_NEW_PURCHASE(bodyRequest);
-    await fetch(url, options);
+    const r = await fetch(url, options);
+    if (r.ok) navigate("/conta");
   }
 
   const Layout = () => (

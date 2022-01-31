@@ -44,10 +44,11 @@ const Cadastro = () => {
       };
       const { url, options } = POST_NEW_USER(formData);
 
-      const token = await fetch(url, options).then((response) =>
-        response.json(),
-      );
-      console.log(JSON.stringify(token));
+      const token = await fetch(url, options).then((response) => {
+        console.log(response);
+        response.json();
+      });
+      // dispatch(saveTokenAndLogin(token.uuid));
     },
   });
 

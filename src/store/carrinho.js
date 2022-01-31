@@ -52,8 +52,8 @@ export const addProduto = (uuid) => async (dispatch, getState) => {
           },
         ]),
       );
-    } catch {
-      console.log("Ocorreu um erro ao fetch");
+    } catch (error) {
+      console.log(error);
     }
   }
 };

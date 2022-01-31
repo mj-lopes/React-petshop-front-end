@@ -51,11 +51,15 @@ export const loginAutomatico = () => async (dispatch, getState) => {
   try {
     dispatch(fetchIniciado());
     const { token } = getState((state) => state);
+    if (!token.data) throw new Error("Token inválido");
+
     const { url, options } = USER_TOKEN_AUTH(token.data);
     const dadosUsuario = await fetch(url, options).then((resp) => resp.json());
 
     return dispatch(fetchSucesso(dadosUsuario));
-  } catch {}
+  } catch (erro) {
+    dispatch(fetchErro(erro.message));
+  }
 };
 
 export const logout = () => async (dispatch, getState) => {

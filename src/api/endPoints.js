@@ -1,4 +1,4 @@
-const BASE_END_POINT = "http://localhost:9090";
+const BASE_END_POINT = "https://react-petshop-back-end.herokuapp.com";
 
 export function FETCH_USER_TOKEN(usuario, senha) {
   const basic64UsuarioSenha = btoa(usuario.concat(`:${senha}`));
@@ -51,7 +51,7 @@ export function GET_PRODUCTS_FROM_CATEGORY(categoria) {
 
 export function GET_PRODUCT_DATA(uuid) {
   return {
-    url: BASE_END_POINT + "/product/" + uuid,
+    url: BASE_END_POINT + "/products/product/" + uuid,
     options: {
       method: "GET",
     },
@@ -60,7 +60,7 @@ export function GET_PRODUCT_DATA(uuid) {
 
 export function GET_PRODUCTS_FROM_SEARCH(query) {
   return {
-    url: BASE_END_POINT + "/search/" + query,
+    url: BASE_END_POINT + "/products/search/" + query,
     options: {
       method: "GET",
     },
@@ -69,7 +69,7 @@ export function GET_PRODUCTS_FROM_SEARCH(query) {
 
 export function GET_PRODUCT_BY_UUID(uuid) {
   return {
-    url: BASE_END_POINT + "/product/" + uuid,
+    url: BASE_END_POINT + "/products/product/" + uuid,
     options: {
       method: "GET",
     },
