@@ -73,7 +73,7 @@ const Produto = () => {
 
           <ProdutoDescricaoCompleta />
 
-          <ProdutoAvaliacao mobile={mobile} />
+          <ProdutoAvaliacao mobile={`${mobile}`} />
 
           <Comentarios />
         </Grid>

@@ -12,8 +12,12 @@ function ImagemSlide(normal, mobile, url, alt) {
   return (
     <Link to={url}>
       <picture>
-        <source srcSet={normal} media="(min-width: 600px)" />
-        <img src={mobile} alt={alt} />
+        <source
+          srcSet={normal}
+          media="(min-width: 600px)"
+          style={{ margin: "auto" }}
+        />
+        <img src={mobile} alt={alt} style={{ margin: "auto" }} />
       </picture>
     </Link>
   );

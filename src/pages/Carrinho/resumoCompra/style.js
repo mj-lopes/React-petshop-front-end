@@ -6,7 +6,7 @@ const GridItemResumoCompra = styled((props) => <Grid item {...props} />)(
     padding: "1rem",
     flex: "1 1 350px",
     alignSelf: "flex-end",
-    position: props.wrap ? "static" : "sticky",
+    position: props.devequebrar ? "static" : "sticky",
     top: "36px",
 
     backgroundColor: "white",

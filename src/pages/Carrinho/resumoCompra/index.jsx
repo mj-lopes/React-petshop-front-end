@@ -27,7 +27,7 @@ const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
   }
 
   return (
-    <GridItemResumoCompra wrap={wrap}>
+    <GridItemResumoCompra devequebrar={`${wrap}`}>
       <Subtitulo>Resumo</Subtitulo>
       <WrapperValorResumoCompra>
         <Texto fontSize={"14px"}>Valor dos Produtos:</Texto>

@@ -30,7 +30,7 @@ const Home = () => {
           imgLateral={Cachorro}
           imgAlt={"Cachorro olhando para a tela"}
           tituloSessao={"Produtos caninos mais vendidos 🐶"}
-          ladoDireito
+          ladoDireito="true"
         />
         <CategoriaProdutos
           categoria={"outros"}
@@ -43,7 +43,7 @@ const Home = () => {
           imgLateral={Brinquedos}
           imgAlt={"Coleira, arranhador para gatos e bolinha"}
           tituloSessao={"Brinquedos e acessórios para diversão 🧶"}
-          ladoDireito
+          ladoDireito="true"
         />
         <Cupom />
       </Container>

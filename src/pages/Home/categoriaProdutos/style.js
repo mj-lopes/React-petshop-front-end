@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { Box, Grid, useMediaQuery } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 const WrapperPrincipalHome = styled((props) => <Grid container {...props} />)(
   (props) => ({
     margin: "2rem 0",
-    flexDirection: props.ladoDireito ? "row-reverse" : "row",
+    flexDirection: props.ladodireito ? "row-reverse" : "row",
   }),
 );
 
@@ -20,8 +20,8 @@ const WrapperImgHome = styled((props) => <Grid item md={3} {...props} />)(
 const ImgCategoriasHome = styled((props) => <img {...props} />)((props) => ({
   width: "250px",
   position: "absolute",
-  left: props.ladoDireito ? "" : "-10px",
-  right: props.ladoDireito ? "-10px" : "",
+  left: props.ladodireito ? "" : "-10px",
+  right: props.ladodireito ? "-10px" : "",
 }));
 
 const WrapperProdutosHome = styled((props) => (
@@ -41,7 +41,7 @@ const HeaderProdutosHome = styled((props) => <Box {...props} />)((props) => ({
 const WrapperCardProdutoHome = styled((props) => <Grid container {...props} />)(
   (props) => ({
     gap: "1rem",
-    "@media screen and (max-width: 785px)": {
+    "@media screen and (max-width: 850px)": {
       justifyContent: "center",
     },
     justifyContent: "space-between",

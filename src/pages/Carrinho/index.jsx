@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { useSelector } from "react-redux";
 
 import { Container, Divider, Grid, List } from "@mui/material";
@@ -50,14 +50,13 @@ const Carrinho = () => {
         <List>
           {listaProdutos.map((item) => {
             return (
-              <>
+              <Fragment key={item.uuid}>
                 <Divider variant="middle" flexItem />
                 <ProdutoCarrinho
-                  key={item.uuid}
                   dadosProduto={item.produto}
                   quantidade={item.quantidade}
                 />
-              </>
+              </Fragment>
             );
           })}
         </List>

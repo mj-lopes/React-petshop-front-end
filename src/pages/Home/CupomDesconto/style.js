@@ -6,7 +6,7 @@ const CupomWrapper = styled(Grid)((props) => ({
   borderRadius: "8px",
   backgroundColor: "white",
   padding: "24px 16px",
-  gap: "3rem",
+  gap: "1rem",
   alignItems: "center",
   margin: "3rem 0",
   boxShadow: "0 0 11px 3px #FFC100, 0 0 4px 1px #FFC100",

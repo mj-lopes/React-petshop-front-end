@@ -1,10 +1,8 @@
+import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { GET_PRODUCTS_FROM_CATEGORY } from "../../../api/endPoints";
-
-import { Box, Grid, useMediaQuery } from "@mui/material";
-import { CardProduto, Botao } from "../../../components";
+import { Botao, CardProduto } from "../../../components";
 import {
   HeaderProdutosHome,
   ImgCategoriasHome,
@@ -33,12 +31,12 @@ const CategoriaProdutos = ({
   }, [categoria]);
 
   return (
-    <WrapperPrincipalHome ladoDireito={ladoDireito}>
+    <WrapperPrincipalHome ladodireito={ladoDireito}>
       <WrapperImgHome>
         <ImgCategoriasHome
           src={imgLateral}
           alt={imgAlt}
-          ladoDireito={ladoDireito}
+          ladodireito={ladoDireito}
         />
       </WrapperImgHome>
 

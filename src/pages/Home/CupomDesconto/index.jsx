@@ -2,7 +2,7 @@ import { Box, Divider, Typography, useMediaQuery } from "@mui/material";
 import { CupomWrapper, CupomCodigoWrapper, CupomTexto } from "./style";
 
 const Cupom = () => {
-  const orientacaoHorizontal = useMediaQuery("(min-width: 1050px)");
+  const orientacaoHorizontal = useMediaQuery("(min-width: 1070px)");
   const quebraSmartphone = useMediaQuery("(min-width: 500px)");
 
   return (

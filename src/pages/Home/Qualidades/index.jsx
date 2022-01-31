@@ -12,7 +12,7 @@ import {
 
 const Qualidade = (img, texto, sub) => {
   return (
-    <Grid item paddingY={1}>
+    <Grid item paddingY={1} flex={"1 1 150px"}>
       <WrapperQualidade>
         <img src={img} alt={texto}></img>
         <Box>

@@ -30,8 +30,8 @@ const BuscaPorQuery = () => {
       <Titulo>{`Busca: '${query}'`}</Titulo>
       <ProdutosCategoriaGrid>
         {data.map((produto) => (
-          <Grid item>
-            <CardProduto dados={produto} key={`produto - ${produto.uuid}`} />
+          <Grid item key={`produto - ${produto.uuid}`}>
+            <CardProduto dados={produto} />
           </Grid>
         ))}
       </ProdutosCategoriaGrid>
