@@ -28,32 +28,38 @@ const PaginaUsuario = () => {
     </Texto>
   );
 
-  if (comprasData.length === 0) return <SemHistorico />;
+  const LayoutHistoricoCompras = () => {
+    return comprasData.length === 0 ? (
+      <SemHistorico />
+    ) : (
+      <div>
+        {comprasData.map((compra) => (
+          <Link to={`/compra/${compra.uuid}`}>
+            <WrapperCompra>
+              <CompraSubtitulo fontFamily={"monospace"}>
+                <CompraSpanSubtitulo>Compra:</CompraSpanSubtitulo> {compra.uuid}
+              </CompraSubtitulo>
+              <CompraSubtitulo>
+                <CompraSpanSubtitulo>Data:</CompraSpanSubtitulo>{" "}
+                {new Date(compra.data).toLocaleDateString("pt-BR")}
+              </CompraSubtitulo>
+              <CompraSubtitulo style={{ color: "#FFC100" }}>
+                <CompraSpanSubtitulo>Status:</CompraSpanSubtitulo>{" "}
+                {compra.status}
+              </CompraSubtitulo>
+            </WrapperCompra>
+          </Link>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Container>
       <HeaderUsuario usuario={usuario} />
       <Box my={4}>
         <Titulo my={2}>Ultimas Compras</Titulo>
-        <div>
-          {comprasData.map((compra) => (
-            <Link to={`/compra/${compra.uuid}`}>
-              <WrapperCompra>
-                <CompraSubtitulo fontFamily={"monospace"}>
-                  <CompraSpanSubtitulo>Compra:</CompraSpanSubtitulo>{" "}
-                  {compra.uuid}
-                </CompraSubtitulo>
-                <CompraSubtitulo>
-                  <CompraSpanSubtitulo>Data:</CompraSpanSubtitulo>{" "}
-                  {new Date(compra.data).toLocaleDateString("pt-BR")}
-                </CompraSubtitulo>
-                <CompraSubtitulo style={{ color: "#FFC100" }}>
-                  <CompraSpanSubtitulo>Status:</CompraSpanSubtitulo>{" "}
-                  {compra.status}
-                </CompraSubtitulo>
-              </WrapperCompra>
-            </Link>
-          ))}
-        </div>
+        <LayoutHistoricoCompras />
       </Box>
     </Container>
   );
