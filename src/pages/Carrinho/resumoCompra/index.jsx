@@ -55,7 +55,7 @@ const ResumoCompra = ({
 
         <Texto fontSize={"14px"} textAlign="center">
           (em até 3x de{" "}
-          {converterParaStringPreco(pegarOPrecoDeTodosProdutos() / 3, 1.2)})
+          {converterParaStringPreco(pegarOPrecoDeTodosProdutos() / 3, 1.25)})
         </Texto>
       </WrapperValorAPrazoResumoCompra>
 

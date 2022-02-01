@@ -22,7 +22,7 @@ const ProdutoDescricao = ({ produtoInfo, addAoCarrinho }) => {
 
           <sub>
             ou <img src={cartao} alt="" width={18} /> 3x de{" "}
-            {(produtoInfo.preco / 3 + 3)?.toLocaleString("pt-BR", {
+            {((produtoInfo.preco * 1.25) / 3)?.toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL",
             })}

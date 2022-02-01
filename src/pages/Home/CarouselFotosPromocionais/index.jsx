@@ -45,19 +45,19 @@ const CarrouselHome = () => {
       {ImagemSlide(
         Slide1,
         Slide1_mobile,
-        "/",
+        "/produto/b66cdd17-e150-44a2-86d3-24bf52b1dcea",
         "Propaganda da Ração Purina para gatos",
       )}
       {ImagemSlide(
         Slide2,
         Slide2_mobile,
-        "/",
+        "/produtos/acessorios_brinquedos",
         "Propaganda de novos brinquedos na loja",
       )}
       {ImagemSlide(
         Slide3,
         Slide3_mobile,
-        "/",
+        "/produtos/remedios",
         "Propaganda de medicamentos para o tratamento de doênças",
       )}
     </CarouselImagens>
