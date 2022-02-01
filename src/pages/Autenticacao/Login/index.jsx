@@ -60,7 +60,7 @@ const Login = () => {
         <Botao
           amarelo="y"
           type="submit"
-          style={{ margin: ".5rem 0" }}
+          style={{ margin: ".5rem 0", minWidth: "125px" }}
           disabled={carregando}
         >
           {carregando ? "Logando..." : "Entrar"}

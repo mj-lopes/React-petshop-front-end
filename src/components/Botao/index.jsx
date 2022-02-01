@@ -17,7 +17,11 @@ const Btn = styled(Button)(({ theme, branco, amarelo }) => ({
       amarelo || branco
         ? theme.palette.primary.main
         : theme.palette.secondary.main,
-    boxShadow: `0 0 7px 4px ${
+    boxShadow: `0 0 0 2px ${
+      amarelo || branco
+        ? theme.palette.primary.main
+        : theme.palette.secondary.main
+    }, 0 0 8px 2px ${
       amarelo || branco
         ? theme.palette.primary.main
         : theme.palette.secondary.main
