@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { GET_PRODUCT_BY_UUID } from "../api/endPoints";
-import removeFromArray from "../helper/removeFromArray";
 
 const slice = createSlice({
   name: "Carrinho",
@@ -14,10 +13,14 @@ const slice = createSlice({
     removeDoCarrinho(state, action) {
       state.listaProdutos = action.payload;
     },
+    limparCarrinho(state) {
+      state.listaProdutos = [];
+    },
   },
 });
 
-export const { addAoCarrinho, removeDoCarrinho } = slice.actions;
+export const { addAoCarrinho, removeDoCarrinho, limparCarrinho } =
+  slice.actions;
 
 export const addProduto = (uuid) => async (dispatch, getState) => {
   const { carrinho } = getState((state) => state.carrinho);

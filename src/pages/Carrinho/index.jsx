@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { Fragment, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Container, Divider, Grid, List } from "@mui/material";
 import { Subtitulo, Titulo, Alerta } from "../../components";
@@ -15,6 +15,7 @@ import {
 } from "./style";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { useNavigate } from "react-router-dom";
+import { limparCarrinho } from "../../store/carrinho";
 
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
@@ -23,6 +24,7 @@ const Carrinho = () => {
   const [avisoCompra, setAvisoCompra] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleSubmitCupom(cupom) {
     cupom.toLocaleLowerCase() === "react10"
@@ -50,8 +52,9 @@ const Carrinho = () => {
     if (ok) {
       setAvisoCompra("Compra realizada com sucesso!");
       setTimeout(() => {
+        dispatch(limparCarrinho());
         navigate("/conta");
-      }, 4000);
+      }, 3000);
     }
   }
 
@@ -63,14 +66,13 @@ const Carrinho = () => {
         <List>
           {listaProdutos.map((item) => {
             return (
-              <>
+              <Fragment key={item.uuid}>
                 <Divider variant="middle" flexItem />
                 <ProdutoCarrinho
-                  key={item.uuid}
                   dadosProduto={item.produto}
                   quantidade={item.quantidade}
                 />
-              </>
+              </Fragment>
             );
           })}
         </List>
