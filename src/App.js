@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loginAutomatico } from "./store/user";
 import Carrinho from "./pages/Carrinho";
-import HistoricoCompra from "./pages/HistoricoCompras";
+import HistoricoCompra from "./pages/CompraHistorico";
 
 function App() {
   const dispatch = useDispatch();
