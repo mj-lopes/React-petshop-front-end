@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Skeleton } from "@mui/material";
 import { useParams } from "react-router";
 import {
   CardProduto,
@@ -28,7 +28,7 @@ const tituloCategoria = (cat) => {
 
 const ListaProdutosCategoria = () => {
   const { categoria } = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     async function fetchProdutos() {
@@ -42,15 +42,27 @@ const ListaProdutosCategoria = () => {
     fetchProdutos();
   }, [categoria]);
 
+  const ProdutosLayout = () => {
+    return data ? (
+      data.map((item) => (
+        <Grid item key={`item ${item.uuid}`}>
+          <CardProduto dados={item} />
+        </Grid>
+      ))
+    ) : (
+      <>
+        <Skeleton width={250} height={340} variant="rectangular" />
+        <Skeleton width={250} height={340} variant="rectangular" />
+        <Skeleton width={250} height={340} variant="rectangular" />
+      </>
+    );
+  };
+
   return (
     <ProdutosCategoriaWrapper>
       <Titulo>{tituloCategoria(categoria)}</Titulo>
       <ProdutosCategoriaGrid>
-        {data.map((produto) => (
-          <Grid item key={`produto - ${produto.uuid}`}>
-            <CardProduto dados={produto} />
-          </Grid>
-        ))}
+        <ProdutosLayout />
       </ProdutosCategoriaGrid>
     </ProdutosCategoriaWrapper>
   );

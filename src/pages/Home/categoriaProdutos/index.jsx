@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GET_PRODUCTS_FROM_CATEGORY } from "../../../api/endPoints";
@@ -19,7 +19,7 @@ const CategoriaProdutos = ({
   tituloSessao,
   categoria,
 }) => {
-  const [dados, setDados] = useState([]);
+  const [dados, setDados] = useState(null);
 
   useEffect(() => {
     async function fetchDados() {
@@ -29,6 +29,22 @@ const CategoriaProdutos = ({
     }
     fetchDados();
   }, [categoria]);
+
+  const ProdutosLayout = () => {
+    return dados ? (
+      dados.map((item) => (
+        <Grid item key={`item ${item.uuid}`}>
+          <CardProduto dados={item} />
+        </Grid>
+      ))
+    ) : (
+      <>
+        <Skeleton width={250} height={340} variant="rectangular" />
+        <Skeleton width={250} height={340} variant="rectangular" />
+        <Skeleton width={250} height={340} variant="rectangular" />
+      </>
+    );
+  };
 
   return (
     <WrapperPrincipalHome ladodireito={ladoDireito}>
@@ -48,11 +64,7 @@ const CategoriaProdutos = ({
           </Botao>
         </HeaderProdutosHome>
         <WrapperCardProdutoHome>
-          {dados.map((item) => (
-            <Grid item key={`item ${item.uuid}`}>
-              <CardProduto dados={item} />
-            </Grid>
-          ))}
+          <ProdutosLayout />
         </WrapperCardProdutoHome>
       </WrapperProdutosHome>
     </WrapperPrincipalHome>

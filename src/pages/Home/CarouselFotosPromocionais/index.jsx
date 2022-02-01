@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Skeleton } from "@mui/material";
 import { CarouselImagens } from "../../../components";
 import { Link } from "react-router-dom";
 
@@ -9,15 +11,29 @@ import Slide2 from "../../../asserts/slide2.png";
 import Slide3 from "../../../asserts/slide3.png";
 
 function ImagemSlide(normal, mobile, url, alt) {
+  const [loading, setLoading] = useState(true);
+
+  function handleImgLoad({ target }) {
+    target.style.display = "block";
+    setLoading(false);
+  }
+
   return (
     <Link to={url}>
-      <picture>
+      {loading && (
+        <Skeleton height={350} animation={"wave"} variant="rectangular" />
+      )}
+      <picture onLoad={handleImgLoad}>
         <source
           srcSet={normal}
           media="(min-width: 600px)"
-          style={{ margin: "auto" }}
+          style={{ margin: "auto", display: "none" }}
         />
-        <img src={mobile} alt={alt} style={{ margin: "auto" }} />
+        <img
+          src={mobile}
+          alt={alt}
+          style={{ margin: "auto", display: "none" }}
+        />
       </picture>
     </Link>
   );

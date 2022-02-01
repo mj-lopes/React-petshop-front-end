@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { Container, Divider, Grid, List } from "@mui/material";
@@ -13,13 +13,11 @@ import {
   ContainerListaProdutosCarrinho,
   WrapperListaProdutosCarrinho,
 } from "./style";
-import { useNavigate } from "react-router-dom";
 
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const comprador = useSelector((store) => store.usuario?.data);
   const [temDesconto, setTemDesconto] = useState(false);
-  const navigate = useNavigate();
 
   function handleSubmitCupom(cupom) {
     cupom.toLocaleLowerCase() === "react10"
@@ -38,8 +36,7 @@ const Carrinho = () => {
     bodyRequest.unshift({ comprador: comprador.uuid });
 
     const { url, options } = SAVE_NEW_PURCHASE(bodyRequest);
-    const r = await fetch(url, options);
-    if (r.ok) navigate("/conta");
+    await fetch(url, options);
   }
 
   const Layout = () => (
@@ -50,13 +47,14 @@ const Carrinho = () => {
         <List>
           {listaProdutos.map((item) => {
             return (
-              <Fragment key={item.uuid}>
+              <>
                 <Divider variant="middle" flexItem />
                 <ProdutoCarrinho
+                  key={item.uuid}
                   dadosProduto={item.produto}
                   quantidade={item.quantidade}
                 />
-              </Fragment>
+              </>
             );
           })}
         </List>

@@ -33,6 +33,17 @@ const Header = () => {
   const quantidadeProdutos = useSelector(
     ({ carrinho }) => carrinho.listaProdutos.length,
   );
+
+  function closeMenuMobile(event) {
+    event.stopPropagation();
+    setMenuIsOpen(false);
+  }
+
+  function openMenuMobile(event) {
+    event.stopPropagation();
+    setMenuIsOpen(true);
+  }
+
   const validationSchema = yup.object({
     query: yup
       .string("Escreva um valor chave para a pesquisa")
@@ -57,7 +68,7 @@ const Header = () => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <IconButton type="submit">
+              <IconButton type="submit" onClick={closeMenuMobile}>
                 <SearchRoundedIcon color={mobile ? "primary" : "secondary"} />
               </IconButton>
             </InputAdornment>
@@ -79,6 +90,7 @@ const Header = () => {
     <Badge
       badgeContent={quantidadeProdutos}
       color={mobile ? "primary" : "secondary"}
+      onClick={closeMenuMobile}
     >
       <Link to="/carrinho">
         <ShoppingCartOutlinedIcon sx={{ color: "#333" }} />
@@ -90,7 +102,7 @@ const Header = () => {
     return (
       <>
         <UserLogin />
-        <LoginText>
+        <LoginText onClick={closeMenuMobile}>
           {user ? (
             <Link to="/conta">Olá, {user?.nome}</Link>
           ) : (
@@ -103,16 +115,6 @@ const Header = () => {
       </>
     );
   };
-
-  function closeMenuMobile(event) {
-    event.stopPropagation();
-    setMenuIsOpen(false);
-  }
-
-  function openMenuMobile(event) {
-    event.stopPropagation();
-    setMenuIsOpen(true);
-  }
 
   if (mediaMobile) {
     return (
