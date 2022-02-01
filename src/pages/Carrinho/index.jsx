@@ -22,14 +22,18 @@ const Carrinho = () => {
   const comprador = useSelector((store) => store.usuario?.data);
   const [temDesconto, setTemDesconto] = useState(false);
   const [avisoCompra, setAvisoCompra] = useState("");
+  const [avisoCupom, setAvisoCupom] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function handleSubmitCupom(cupom) {
-    cupom.toLocaleLowerCase() === "react10"
-      ? setTemDesconto(true)
-      : setTemDesconto(false);
+    if (cupom.toLocaleLowerCase() === "react10") {
+      setAvisoCupom("Cupom aplicado!");
+      setTemDesconto(true);
+    } else {
+      setTemDesconto(false);
+    }
   }
 
   async function handleFinalizarCompra() {
@@ -97,6 +101,11 @@ const Carrinho = () => {
       <Alerta
         tipo={"success"}
         mensagem={avisoCompra}
+        icone={<CheckCircleRoundedIcon />}
+      />
+      <Alerta
+        tipo={"success"}
+        mensagem={avisoCupom}
         icone={<CheckCircleRoundedIcon />}
       />
     </Container>

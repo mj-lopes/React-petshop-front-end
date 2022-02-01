@@ -56,15 +56,15 @@ const Cadastro = () => {
         const { url, options } = POST_NEW_USER(formData);
 
         setLoading(true);
+
         const { ok } = await fetch(url, options);
-        setLoading(false);
 
         if (ok) {
           setSuccess("Cadastro realizado com sucesso!");
-          setTimeout(() => {
-            dispatch(fetchUsuario(values.usuario, values.senha));
-          }, 4000);
+          dispatch(fetchUsuario(values.usuario, values.senha));
         }
+
+        setLoading(false);
       } catch (error) {
         setError(error);
       }

@@ -21,7 +21,7 @@ function ImagemSlide(normal, mobile, url, alt) {
   return (
     <Link to={url}>
       {loading && (
-        <Skeleton height={350} animation={"wave"} variant="rectangular" />
+        <Skeleton height={520} animation={"wave"} variant="rectangular" />
       )}
       <picture onLoad={handleImgLoad}>
         <source

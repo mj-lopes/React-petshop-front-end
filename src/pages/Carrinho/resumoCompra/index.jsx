@@ -1,4 +1,5 @@
 import { Box, Divider, Grid, useMediaQuery } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { Botao, Subtitulo, Texto } from "../../../components";
 import {
   GridItemResumoCompra,
@@ -13,6 +14,7 @@ const ResumoCompra = ({
   loading,
 }) => {
   const wrap = useMediaQuery("(max-width: 830px)");
+  const navigate = useNavigate();
 
   function converterParaStringPreco(num, taxaPrazo = 1) {
     let valor = num * taxaPrazo;
@@ -57,7 +59,11 @@ const ResumoCompra = ({
         </Texto>
       </WrapperValorAPrazoResumoCompra>
 
-      <Botao amarelo="y" sx={{ width: "100%", marginBottom: "1rem" }}>
+      <Botao
+        amarelo="y"
+        sx={{ width: "100%", marginBottom: "1rem" }}
+        onClick={() => navigate("/")}
+      >
         Continuar comprando
       </Botao>
       <Botao
