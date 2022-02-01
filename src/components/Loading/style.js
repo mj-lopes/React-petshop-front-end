@@ -7,7 +7,6 @@ const WrapperLoading = styled((props) => <div {...props} />)({
   top: "0px",
   left: " 0px",
   zIndex: "1000",
-  background: "rgba(0, 0, 0, 0.2)",
 });
 
 const LoadingSvg = styled((props) => <div {...props} />)({
@@ -20,7 +19,7 @@ const LoadingSvg = styled((props) => <div {...props} />)({
   justifyContent: "center",
   alignItems: "center",
 
-  background: "rgba(255, 255, 255, 0.5)",
+  background: "rgba(255, 255, 255, 0.9)",
 
   paddingLeft: "5px",
 });
