@@ -1,7 +1,9 @@
-import { Grid, Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { GET_PRODUCTS_FROM_CATEGORY } from "../../../api/endPoints";
+
+import { Grid, Skeleton } from "@mui/material";
 import { Botao, CardProduto } from "../../../components";
 import {
   HeaderProdutosHome,

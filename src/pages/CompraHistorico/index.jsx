@@ -1,16 +1,15 @@
+import { Fragment, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { GET_PURCHASE } from "../../api/endPoints";
+
+import { Loading, ProdutoListaItem, Subtitulo, Texto } from "../../components";
 import {
-  Box,
   Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { GET_PURCHASE } from "../../api/endPoints";
-import { Loading, ProdutoListaItem, Subtitulo, Texto } from "../../components";
-
 import {
   Categoria,
   ContainerHCompra,
@@ -19,6 +18,7 @@ import {
   HeaderHCompraCard,
   Informacao,
 } from "./style";
+
 import LocalShippingSharpIcon from "@mui/icons-material/LocalShippingSharp";
 import ShoppingBasketSharpIcon from "@mui/icons-material/ShoppingBasketSharp";
 import CalendarTodaySharpIcon from "@mui/icons-material/CalendarTodaySharp";

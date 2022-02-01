@@ -2,6 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { useSelector } from "react-redux";
+
+import { Botao, NavagacaoCategoria } from "..";
+import { FieldSearch, LoginText } from "./style";
+
 import {
   Badge,
   Box,
@@ -20,10 +25,6 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { ReactComponent as UserLogin } from "../../asserts/userlogin.svg";
 import Marca from "../../asserts/marca.svg";
-import { Botao } from "..";
-import { FieldSearch, LoginText } from "./style";
-import NavagacaoCategoria from "../CatNav";
-import { useSelector } from "react-redux";
 
 const Header = () => {
   const mediaMobile = useMediaQuery("(max-width: 768px)");
@@ -81,7 +82,9 @@ const Header = () => {
   const marca = () => (
     <Grid item sm={3}>
       <Link to="/">
-        <img src={Marca} alt="Logomarca da React Dogs" height={"64px"} />
+        <h1 style={{ lineHeight: 1 }}>
+          <img src={Marca} alt="Logomarca da React Dogs" height={"64px"} />
+        </h1>
       </Link>
     </Grid>
   );
@@ -133,6 +136,7 @@ const Header = () => {
               </Botao>
             </Grid>
           </Grid>
+
           <Drawer open={menuIsOpen} anchor="right" onClose={closeMenuMobile}>
             <Stack sx={{ width: "250px", margin: 1 }} gap={1}>
               <Box

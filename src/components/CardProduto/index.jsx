@@ -1,17 +1,20 @@
+import { Link } from "react-router-dom";
+
 import {
   CardActionArea,
   CardContent,
   CardHeader,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-import Product from "../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
+
 import {
   WrapperCartao,
   PrecoAVista,
   PrecoParcelado,
   CardImg,
 } from "./style.js";
+
+import ImgProdutoPlaceholder from "../../asserts/imgPlaceholder.png";
 
 const CardProduto = ({ dados }) => {
   const { uuid, imgurl, nome, preco } = dados;
@@ -29,7 +32,7 @@ const CardProduto = ({ dados }) => {
       <WrapperCartao raised>
         <Link to={`/produto/${uuid}`}>
           <CardHeader action={"★4.9"} sx={{ margin: "0px" }} />
-          <CardImg image={imgurl || Product} component={"img"} />
+          <CardImg image={imgurl || ImgProdutoPlaceholder} component={"img"} />
           <CardContent sx={{ position: "absolute", bottom: "0" }}>
             <Typography paragraph textAlign={"center"} fontFamily={"Sen"}>
               {nome}

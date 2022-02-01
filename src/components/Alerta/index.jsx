@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
+
 import { Alert, Slide, Snackbar } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { useEffect, useState } from "react";
 
 function TransitionDown(props) {
   return <Slide {...props} direction="down" />;

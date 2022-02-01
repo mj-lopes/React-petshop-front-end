@@ -1,15 +1,16 @@
-import React from "react";
 import CarrouselHome from "./CarouselFotosPromocionais";
 import Qualidades from "./Qualidades";
 import CategoriaProdutos from "./CategoriaProdutos";
+import Cupom from "./CupomDesconto";
+import FooterQuote from "./Quote";
+
 import { Container } from "@mui/material";
+import { Titulo } from "../../components";
+
 import Gato from "../../asserts/gato.png";
 import Cachorro from "../../asserts/cachorro.png";
 import OutrosAnimais from "../../asserts/outros-img.png";
 import Brinquedos from "../../asserts/brinquedos.png";
-import Cupom from "./CupomDesconto";
-import FooterQuote from "./Quote";
-import { Titulo } from "../../components";
 
 const Home = () => {
   return (

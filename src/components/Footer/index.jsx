@@ -9,10 +9,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import WhatsappOutlinedIcon from "@mui/icons-material/WhatsappOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+
 import { ReactComponent as Visa } from "../../asserts/visa.svg";
 import { ReactComponent as AmericanEx } from "../../asserts/americanexpress.svg";
 import { ReactComponent as MasterCard } from "../../asserts/mastercard.svg";
@@ -35,7 +37,7 @@ const Titilo = ({ children }) => {
 
 const Footer = () => {
   return (
-    <Box sx={{ backgroundColor: "#FFC100" }}>
+    <footer style={{ backgroundColor: "#FFC100" }}>
       <Container sx={{ padding: "3rem 1rem" }}>
         <Grid container justifyContent={"space-between"}>
           <Grid item>
@@ -96,7 +98,7 @@ const Footer = () => {
           <br /> Todas as imagens são de direito de seus respectivos autores
         </Typography>
       </Box>
-    </Box>
+    </footer>
   );
 };
 

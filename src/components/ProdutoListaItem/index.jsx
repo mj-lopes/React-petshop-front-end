@@ -1,6 +1,8 @@
-import { ListItemAvatar, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
-import Img from "../../asserts/Ração_Seca_Nestlé_Purina_Friskies_Frango_para_Gatos_Adultos_3104249-removebg-preview.png";
+
+import { ListItemAvatar, ListItemText } from "@mui/material";
+
+import ImgPlaceHolder from "../../asserts/imgPlaceholder.png";
 
 const ProdutoListaItem = ({ dadosProduto, quantidade }) => {
   function converterParaStringPreco(stringValor) {
@@ -15,7 +17,7 @@ const ProdutoListaItem = ({ dadosProduto, quantidade }) => {
       <ListItemAvatar sx={{ maxWidth: "clamp(60px, 15vw, 150px)", mx: 2 }}>
         <Link to={`../produto/${dadosProduto.uuid}`}>
           <img
-            src={dadosProduto.imgurl || Img}
+            src={dadosProduto.imgurl || ImgPlaceHolder}
             alt={dadosProduto.nome || "Imagem placeholder do produto"}
           />
         </Link>

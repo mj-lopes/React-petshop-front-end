@@ -1,11 +1,12 @@
-import { Botao, Titulo, Texto, Alerta } from "../../../components";
-import Input from "../../../components/Input";
+import { useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { POST_NEW_USER } from "../../../api/endPoints";
+
 import { useDispatch } from "react-redux";
 import { fetchUsuario } from "../../../store/user";
-import { useState } from "react";
+import { POST_NEW_USER } from "../../../api/endPoints";
+
+import { Botao, Titulo, Texto, Alerta, Input } from "../../../components";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 
 const Cadastro = () => {

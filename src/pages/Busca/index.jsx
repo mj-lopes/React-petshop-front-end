@@ -1,7 +1,8 @@
-import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GET_PRODUCTS_FROM_SEARCH } from "../../api/endPoints";
+
+import { Grid } from "@mui/material";
 import {
   CardProduto,
   ProdutosCategoriaGrid,

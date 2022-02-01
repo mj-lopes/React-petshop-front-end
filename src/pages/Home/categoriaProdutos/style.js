@@ -17,12 +17,14 @@ const WrapperImgHome = styled((props) => <Grid item md={3} {...props} />)(
   }),
 );
 
-const ImgCategoriasHome = styled((props) => <img {...props} />)((props) => ({
-  width: "250px",
-  position: "absolute",
-  left: props.ladodireito ? "" : "-10px",
-  right: props.ladodireito ? "-10px" : "",
-}));
+const ImgCategoriasHome = styled((props) => <img alt={props.alt} {...props} />)(
+  (props) => ({
+    width: "250px",
+    position: "absolute",
+    left: props.ladodireito ? "" : "-10px",
+    right: props.ladodireito ? "-10px" : "",
+  }),
+);
 
 const WrapperProdutosHome = styled((props) => (
   <Grid item bplistaprodutosmobile={12} bplistaprodutos={9} {...props} />

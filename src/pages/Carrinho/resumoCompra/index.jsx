@@ -1,5 +1,6 @@
-import { Box, Divider, Grid, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
+import { Box, Divider, useMediaQuery } from "@mui/material";
 import { Botao, Subtitulo, Texto } from "../../../components";
 import {
   GridItemResumoCompra,

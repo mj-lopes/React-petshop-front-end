@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { Container, Grid, Skeleton } from "@mui/material";
 import { useParams } from "react-router";
+
+import { GET_PRODUCTS_FROM_CATEGORY } from "../../api/endPoints";
+
+import { Grid, Skeleton } from "@mui/material";
 import {
   CardProduto,
   ProdutosCategoriaGrid,
   ProdutosCategoriaWrapper,
   Titulo,
 } from "../../components";
-import { GET_PRODUCTS_FROM_CATEGORY } from "../../api/endPoints";
 
 const tituloCategoria = (cat) => {
   switch (cat) {

@@ -1,9 +1,11 @@
+import { useDispatch } from "react-redux";
+import { addProduto, removerProduto } from "../../../store/carrinho";
+
+import { IconButton, ListItem } from "@mui/material";
+import { ProdutoListaItem } from "../../../components";
+
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
-import { IconButton, ListItem } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { ProdutoListaItem } from "../../../components";
-import { addProduto, removerProduto } from "../../../store/carrinho";
 
 const ProdutoCarrinho = ({ dadosProduto, quantidade }) => {
   const dispatch = useDispatch();

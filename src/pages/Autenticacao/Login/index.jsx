@@ -1,11 +1,12 @@
-import { Box } from "@mui/material";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { Alerta, Botao, Subtitulo, Titulo } from "../../../components";
-import Input from "../../../components/Input";
+
+import { useDispatch, useSelector } from "react-redux";
 import { fetchUsuario } from "../../../store/user";
+
+import { Box } from "@mui/material";
+import { Alerta, Botao, Subtitulo, Titulo, Input } from "../../../components";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 
 const Login = () => {

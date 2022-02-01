@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Box, Container, List, Typography } from "@mui/material";
-import { Texto } from "../../components";
 
 const ContainerHCompra = styled((props) => <Container {...props} />)(
   (props) => ({

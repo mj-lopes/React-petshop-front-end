@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { addProduto } from "../../store/carrinho";
 
 import { GET_PRODUCT_DATA } from "../../api/endPoints";
-import PegadasBG from "../../asserts/paw-bg.png";
 
 import ProdutoAvaliacao from "./ProdutoAvaliacao";
 import Comentarios from "./ProdutoComentarios";
@@ -15,6 +14,7 @@ import ProdutoResumo from "./ProdutoResumo";
 import { Container, Divider, Grid, useMediaQuery } from "@mui/material";
 import { Loading, Alerta } from "../../components";
 import { ProdutoResumoWrapper } from "./style";
+import PegadasBG from "../../asserts/paw-bg.png";
 
 const Produto = () => {
   const { uuid } = useParams();
