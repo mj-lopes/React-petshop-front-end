@@ -57,10 +57,10 @@ export const fetchUsuario = (usuario, senha) => async (dispatch) => {
 
 export const loginAutomatico = () => async (dispatch, getState) => {
   try {
-    dispatch(fetchIniciado());
     const { token } = getState((state) => state);
-    if (!token.data) throw new Error();
+    if (!token.data) throw new Error("");
 
+    dispatch(fetchIniciado());
     const { url, options } = USER_TOKEN_AUTH(token.data);
     const resp = await fetch(url, options);
 
@@ -68,8 +68,9 @@ export const loginAutomatico = () => async (dispatch, getState) => {
 
     const dadosUsuario = await resp.json();
     return dispatch(fetchSucesso(dadosUsuario));
-  } catch (erro) {
+  } catch (e) {
     window.localStorage.removeItem("token");
+    return dispatch(fetchErro(null));
   }
 };
 
