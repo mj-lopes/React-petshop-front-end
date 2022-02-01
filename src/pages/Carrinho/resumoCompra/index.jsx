@@ -6,7 +6,12 @@ import {
   WrapperValorResumoCompra,
 } from "./style";
 
-const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
+const ResumoCompra = ({
+  desconto,
+  listaProdutos,
+  handleFinalizarCompra,
+  loading,
+}) => {
   const wrap = useMediaQuery("(max-width: 830px)");
 
   function converterParaStringPreco(num, taxaPrazo = 1) {
@@ -60,8 +65,9 @@ const ResumoCompra = ({ desconto, listaProdutos, handleFinalizarCompra }) => {
         branco="y"
         sx={{ width: "100%" }}
         onClick={handleFinalizarCompra}
+        disabled={loading}
       >
-        Ir para o Pagamento
+        {loading ? "Finalizando..." : "Realizar o Pagamento"}
       </Botao>
     </GridItemResumoCompra>
   );

@@ -38,6 +38,9 @@ export const { fetchIniciado, fetchSucesso, fetchErro, logoutUsuario } =
 export default slice.reducer;
 
 export const fetchUsuario = (usuario, senha) => async (dispatch) => {
+   
+  
+  
   try {
     dispatch(fetchIniciado());
     const { payload } = await dispatch(fetchToken(usuario, senha));

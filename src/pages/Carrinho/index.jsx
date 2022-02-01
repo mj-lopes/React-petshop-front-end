@@ -21,6 +21,7 @@ const Carrinho = () => {
   const comprador = useSelector((store) => store.usuario?.data);
   const [temDesconto, setTemDesconto] = useState(false);
   const [avisoCompra, setAvisoCompra] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   function handleSubmitCupom(cupom) {
@@ -39,8 +40,12 @@ const Carrinho = () => {
     });
     bodyRequest.unshift({ comprador: comprador.uuid });
 
+    setLoading(true);
+
     const { url, options } = SAVE_NEW_PURCHASE(bodyRequest);
     const { ok } = await fetch(url, options);
+
+    setLoading(false);
 
     if (ok) {
       setAvisoCompra("Compra realizada com sucesso!");
@@ -78,6 +83,7 @@ const Carrinho = () => {
         desconto={temDesconto}
         listaProdutos={listaProdutos}
         handleFinalizarCompra={() => handleFinalizarCompra()}
+        loading={loading}
       />
     </ContainerListaProdutosCarrinho>
   );
@@ -88,7 +94,7 @@ const Carrinho = () => {
       {listaProdutos.length !== 0 ? <Layout /> : <Vazio />}
       <Alerta
         tipo={"success"}
-        mensagem={"Compra realizada com sucesso!"}
+        mensagem={avisoCompra}
         icone={<CheckCircleRoundedIcon />}
       />
     </Container>
