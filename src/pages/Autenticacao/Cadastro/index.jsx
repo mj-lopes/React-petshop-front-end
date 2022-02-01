@@ -1,13 +1,19 @@
-import { Botao, Titulo, Texto } from "../../../components";
+import { Botao, Titulo, Texto, Alerta } from "../../../components";
 import Input from "../../../components/Input";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { POST_NEW_USER } from "../../../api/endPoints";
 import { useDispatch } from "react-redux";
 import { fetchUsuario } from "../../../store/user";
+import { useState } from "react";
+import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 
 const Cadastro = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const validationSchema = yup.object({
     email: yup
       .string("Escreva o seu email")
@@ -39,18 +45,28 @@ const Cadastro = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const formData = {
-        nome: values.usuario,
-        cpf: values.cpf,
-        email: values.email,
-        senha: values.senha,
-      };
-      const { url, options } = POST_NEW_USER(formData);
+      try {
+        const formData = {
+          nome: values.usuario,
+          cpf: values.cpf,
+          email: values.email,
+          senha: values.senha,
+        };
 
-      const { ok } = await fetch(url, options);
+        const { url, options } = POST_NEW_USER(formData);
 
-      if (ok) {
-        dispatch(fetchUsuario(values.usuario, values.senha));
+        setLoading(true);
+        const { ok } = await fetch(url, options);
+        setLoading(false);
+
+        if (ok) {
+          setSuccess("Cadastro realizado com sucesso!");
+          setTimeout(() => {
+            dispatch(fetchUsuario(values.usuario, values.senha));
+          }, 4000);
+        }
+      } catch (error) {
+        setError(error);
       }
     },
   });
@@ -98,10 +114,16 @@ const Cadastro = () => {
           error={formik.touched.senha && Boolean(formik.errors.senha)}
           helperText={formik.touched.senha && formik.errors.senha}
         />
-        <Botao amarelo="y" type="submit" style={{ margin: "1rem 0" }}>
-          Enviar
+        <Botao
+          amarelo="y"
+          type="submit"
+          style={{ margin: ".5rem 0 2rem 0" }}
+          disabled={loading}
+        >
+          {loading ? "Enviando" : "Enviar"}
         </Botao>
       </form>
+
       <Texto>
         As suas informações estão totalmente seguras com a gente 🐱‍👤
       </Texto>
@@ -109,19 +131,25 @@ const Cadastro = () => {
         Todos os seus dados são criptografados, e o acesso é disponibilizado
         somente a você e aos novos administradores.
       </Texto>
-      <Texto my={1}>
-        Ao criar uma conta, você concorda com os Termos e Condições de Uso da
-        ReactPetshop.
-      </Texto>
-      <Texto marginBottom={4}>
-        Para mais informações,{" "}
+      <Texto margin={"1rem 0 4rem 0"}>
+        Ao criar uma conta, você concorda com os{" "}
         <span
           style={{ cursor: "pointer", fontWeight: "bold" }}
           onClick={() => alert("Sou eeeeuu, o tiririiica")}
         >
-          leia os nossos termos de uso.
-        </span>
+          {" "}
+          Termos e Condições de Uso{" "}
+        </span>{" "}
+        da React Petshop.
       </Texto>
+
+      <Alerta
+        tipo={"error"}
+        mensagem={error}
+        aberto={error}
+        icone={<ErrorRoundedIcon />}
+      />
+      <Alerta tipo={"success"} mensagem={success} />
     </>
   );
 };

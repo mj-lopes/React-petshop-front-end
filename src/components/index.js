@@ -12,6 +12,7 @@ import ProdutoListaItem from "./ProdutoListaItem";
 import Loading from "./Loading";
 import ProdutosCategoriaWrapper from "./ProdutosCategoriaWrapper";
 import ProdutosCategoriaGrid from "./ProdutosCategoriaGrid";
+import Alerta from "./Alerta";
 
 export {
   Header,
@@ -28,4 +29,5 @@ export {
   Loading,
   ProdutosCategoriaWrapper,
   ProdutosCategoriaGrid,
+  Alerta,
 };
