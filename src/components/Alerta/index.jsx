@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 function TransitionDown(props) {
   return <Slide {...props} direction="down" />;
 }
-const Alerta = ({ tipo, mensagem, aberto }) => {
+const Alerta = ({ tipo, mensagem, aberto, icone }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Alerta = ({ tipo, mensagem, aberto }) => {
   return (
     <Snackbar
       open={open}
-      severity="success"
+      severity={tipo}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       TransitionComponent={TransitionDown}
       autoHideDuration={3000}
@@ -28,7 +28,7 @@ const Alerta = ({ tipo, mensagem, aberto }) => {
       <Alert
         severity={tipo}
         variant="filled"
-        icon={<AddShoppingCartIcon fontSize="inherit" />}
+        icon={icone || <AddShoppingCartIcon fontSize="inherit" />}
       >
         {mensagem}
       </Alert>

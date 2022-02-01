@@ -13,11 +13,16 @@ import {
   ContainerListaProdutosCarrinho,
   WrapperListaProdutosCarrinho,
 } from "./style";
+import Alerta from "../../components/Alerta";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import { useNavigate } from "react-router-dom";
 
 const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const comprador = useSelector((store) => store.usuario?.data);
   const [temDesconto, setTemDesconto] = useState(false);
+  const [avisoCompra, setAvisoCompra] = useState(false);
+  const navigate = useNavigate();
 
   function handleSubmitCupom(cupom) {
     cupom.toLocaleLowerCase() === "react10"
@@ -36,7 +41,13 @@ const Carrinho = () => {
     bodyRequest.unshift({ comprador: comprador.uuid });
 
     const { url, options } = SAVE_NEW_PURCHASE(bodyRequest);
-    await fetch(url, options);
+    const { ok } = await fetch(url, options);
+    if (ok) {
+      setAvisoCompra(true);
+      setTimeout(() => {
+        navigate("/conta");
+      }, 4000);
+    }
   }
 
   const Layout = () => (
@@ -75,6 +86,12 @@ const Carrinho = () => {
     <Container>
       <Titulo>Carrinho</Titulo>
       {listaProdutos.length !== 0 ? <Layout /> : <Vazio />}
+      <Alerta
+        aberto={avisoCompra}
+        tipo={"success"}
+        mensagem={"Compra realizada com sucesso!"}
+        icone={<CheckCircleRoundedIcon />}
+      />
     </Container>
   );
 };
