@@ -9,7 +9,7 @@ import {
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GET_PURCHASE } from "../../api/endPoints";
-import { ProdutoListaItem, Subtitulo, Texto } from "../../components";
+import { Loading, ProdutoListaItem, Subtitulo, Texto } from "../../components";
 
 import {
   Categoria,
@@ -27,13 +27,16 @@ const HistoricoCompras = () => {
   const { uuid } = useParams("uuid");
   const [infoCompra, setInfoCompra] = useState(null);
   const [produtosCompra, setProdutosCompra] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchDadosCompra() {
+      setLoading(true);
       const { url, options } = GET_PURCHASE(uuid);
       const data = await fetch(url, options).then((r) => r.json());
       setInfoCompra(data.shift());
       setProdutosCompra(data);
+      setLoading(false);
     }
     fetchDadosCompra();
   }, [uuid]);
@@ -52,6 +55,7 @@ const HistoricoCompras = () => {
     });
   }
 
+  if (loading) return <Loading />;
   if (produtosCompra.length)
     return (
       <ContainerHCompra>
