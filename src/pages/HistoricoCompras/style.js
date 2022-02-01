@@ -31,12 +31,12 @@ const ContainerValorTotalHCompra = styled((props) => <Box {...props} />)(
 );
 
 const Categoria = ({ texto }) => (
-  <Typography fontWeight="bold" paragraph color={"black"} my={0}>
+  <Typography fontWeight="bold" color={"black"} my={0} component={"span"}>
     {texto}
   </Typography>
 );
 const Informacao = ({ texto }) => (
-  <Typography fontWeight="bold" paragraph color={"#333"} my={0}>
+  <Typography fontWeight="bold" color={"#333"} my={0} component={"span"}>
     {texto}
   </Typography>
 );

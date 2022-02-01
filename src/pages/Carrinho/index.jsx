@@ -42,6 +42,7 @@ const Carrinho = () => {
 
     const { url, options } = SAVE_NEW_PURCHASE(bodyRequest);
     const { ok } = await fetch(url, options);
+
     if (ok) {
       setAvisoCompra(true);
       setTimeout(() => {

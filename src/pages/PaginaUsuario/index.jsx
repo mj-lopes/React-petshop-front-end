@@ -34,8 +34,8 @@ const PaginaUsuario = () => {
     ) : (
       <div>
         {comprasData.map((compra) => (
-          <Link to={`/compra/${compra.uuid}`}>
-            <WrapperCompra>
+          <WrapperCompra key={`Compra key: ${compra.uuid}`}>
+            <Link to={`/compra/${compra.uuid}`}>
               <CompraSubtitulo fontFamily={"monospace"}>
                 <CompraSpanSubtitulo>Compra:</CompraSpanSubtitulo> {compra.uuid}
               </CompraSubtitulo>
@@ -47,8 +47,8 @@ const PaginaUsuario = () => {
                 <CompraSpanSubtitulo>Status:</CompraSpanSubtitulo>{" "}
                 {compra.status}
               </CompraSubtitulo>
-            </WrapperCompra>
-          </Link>
+            </Link>
+          </WrapperCompra>
         ))}
       </div>
     );

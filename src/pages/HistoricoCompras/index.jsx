@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GET_PURCHASE } from "../../api/endPoints";
 import { ProdutoListaItem, Subtitulo, Texto } from "../../components";
@@ -99,15 +99,15 @@ const HistoricoCompras = () => {
 
         <List>
           {produtosCompra.map((produto) => (
-            <>
+            <Fragment key={produto.uuid}>
               <Divider variant="middle" flexItem />
-              <ListItem key={produto.uuid} sx={{ my: 2 }}>
+              <ListItem sx={{ my: 2 }}>
                 <ProdutoListaItem
                   dadosProduto={produto}
                   quantidade={produto.quantidade}
                 />
               </ListItem>
-            </>
+            </Fragment>
           ))}
         </List>
 
