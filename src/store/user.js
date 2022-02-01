@@ -12,6 +12,8 @@ const slice = createSlice({
   reducers: {
     fetchIniciado(state) {
       state.loading = true;
+      state.data = null;
+      state.error = null;
     },
     fetchSucesso(state, action) {
       state.loading = false;
@@ -39,11 +41,17 @@ export const fetchUsuario = (usuario, senha) => async (dispatch) => {
   try {
     dispatch(fetchIniciado());
     const { payload } = await dispatch(fetchToken(usuario, senha));
-    const { url, options } = USER_TOKEN_AUTH(payload.token);
-    const dadosUsuario = await fetch(url, options).then((resp) => resp.json());
-    return dispatch(fetchSucesso(dadosUsuario));
+    if (payload.token) {
+      const { url, options } = USER_TOKEN_AUTH(payload.token);
+      const dadosUsuario = await fetch(url, options).then((resp) =>
+        resp.json(),
+      );
+      return dispatch(fetchSucesso(dadosUsuario));
+    } else {
+      throw new Error(payload);
+    }
   } catch (erro) {
-    return dispatch(fetchErro(erro));
+    return dispatch(fetchErro(erro.message));
   }
 };
 
@@ -51,14 +59,17 @@ export const loginAutomatico = () => async (dispatch, getState) => {
   try {
     dispatch(fetchIniciado());
     const { token } = getState((state) => state);
-    if (!token.data) throw new Error("Token inválido");
+    if (!token.data) throw new Error();
 
     const { url, options } = USER_TOKEN_AUTH(token.data);
-    const dadosUsuario = await fetch(url, options).then((resp) => resp.json());
+    const resp = await fetch(url, options);
 
+    if (!resp.ok) throw new Error();
+
+    const dadosUsuario = await resp.json();
     return dispatch(fetchSucesso(dadosUsuario));
   } catch (erro) {
-    dispatch(fetchErro(erro.message));
+    window.localStorage.removeItem("token");
   }
 };
 

@@ -1,14 +1,18 @@
 import { Box } from "@mui/material";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { Botao, Subtitulo, Titulo } from "../../../components";
+import { Alerta, Botao, Subtitulo, Titulo } from "../../../components";
 import Input from "../../../components/Input";
 import { fetchUsuario } from "../../../store/user";
+import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const erroLogin = useSelector((state) => state.usuario?.error);
+  const carregando = useSelector((state) => state.usuario?.loading);
+
   const validationSchema = yup.object({
     usuario: yup
       .string("Escreva o seu nome de usuário")
@@ -52,8 +56,13 @@ const Login = () => {
           error={formik.touched.senha && Boolean(formik.errors.senha)}
           helperText={formik.touched.senha && formik.errors.senha}
         />
-        <Botao amarelo="y" type="submit" style={{ margin: ".5rem 0" }}>
-          Entrar
+        <Botao
+          amarelo="y"
+          type="submit"
+          style={{ margin: ".5rem 0" }}
+          disabled={carregando}
+        >
+          {carregando ? "Logando..." : "Entrar"}
         </Botao>
       </form>
 
@@ -66,6 +75,11 @@ const Login = () => {
           <Botao branco="y">Cadastrar</Botao>
         </Link>
       </Box>
+      <Alerta
+        tipo={"error"}
+        mensagem={erroLogin}
+        icone={<ErrorRoundedIcon />}
+      />
     </>
   );
 };

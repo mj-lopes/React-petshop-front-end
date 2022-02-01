@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { Container, Divider, Grid, List } from "@mui/material";
-import { Subtitulo, Titulo } from "../../components";
+import { Subtitulo, Titulo, Alerta } from "../../components";
 
 import CupomForm from "./CupomForm";
 import ProdutoCarrinho from "./ProdutoCarrinho";
@@ -13,7 +13,6 @@ import {
   ContainerListaProdutosCarrinho,
   WrapperListaProdutosCarrinho,
 } from "./style";
-import Alerta from "../../components/Alerta";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +20,7 @@ const Carrinho = () => {
   const { listaProdutos } = useSelector((store) => store.carrinho);
   const comprador = useSelector((store) => store.usuario?.data);
   const [temDesconto, setTemDesconto] = useState(false);
-  const [avisoCompra, setAvisoCompra] = useState(false);
+  const [avisoCompra, setAvisoCompra] = useState("");
   const navigate = useNavigate();
 
   function handleSubmitCupom(cupom) {
@@ -44,7 +43,7 @@ const Carrinho = () => {
     const { ok } = await fetch(url, options);
 
     if (ok) {
-      setAvisoCompra(true);
+      setAvisoCompra("Compra realizada com sucesso!");
       setTimeout(() => {
         navigate("/conta");
       }, 4000);
@@ -88,7 +87,6 @@ const Carrinho = () => {
       <Titulo>Carrinho</Titulo>
       {listaProdutos.length !== 0 ? <Layout /> : <Vazio />}
       <Alerta
-        aberto={avisoCompra}
         tipo={"success"}
         mensagem={"Compra realizada com sucesso!"}
         icone={<CheckCircleRoundedIcon />}

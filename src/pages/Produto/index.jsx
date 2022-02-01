@@ -13,15 +13,14 @@ import ProdutoImg from "./ProdutoImg";
 import ProdutoResumo from "./ProdutoResumo";
 
 import { Container, Divider, Grid, useMediaQuery } from "@mui/material";
-import Alerta from "../../components/Alerta";
-import { Loading } from "../../components";
+import { Loading, Alerta } from "../../components";
 import { ProdutoResumoWrapper } from "./style";
 
 const Produto = () => {
   const { uuid } = useParams();
   const [dados, setDados] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [alertaAberto, setAlertaAberto] = useState(false);
+  const [alertaCompraAdd, setAlertaCompraAdd] = useState("");
 
   const mobile = useMediaQuery("(max-width: 700px)");
   const dispatch = useDispatch();
@@ -39,13 +38,13 @@ const Produto = () => {
   }, [uuid]);
 
   function handleClickCarrinho() {
-    if (alertaAberto) {
-      setAlertaAberto(false);
+    if (alertaCompraAdd) {
+      setAlertaCompraAdd("");
       setTimeout(() => {
-        setAlertaAberto(true);
+        setAlertaCompraAdd("Produto adicionado ao carrinho");
       }, 400);
     } else {
-      setAlertaAberto(true);
+      setAlertaCompraAdd("Produto adicionado ao carrinho");
     }
 
     dispatch(addProduto(dados.uuid));
@@ -87,11 +86,7 @@ const Produto = () => {
         </Grid>
       </Grid>
 
-      <Alerta
-        aberto={alertaAberto}
-        mensagem="Produto adicionado ao carrinho"
-        tipo="success"
-      />
+      <Alerta mensagem={alertaCompraAdd} tipo="success" />
     </Container>
   );
 };

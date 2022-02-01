@@ -12,6 +12,8 @@ const slice = createSlice({
   reducers: {
     fetchIniciado(state) {
       state.loading = true;
+      state.data = null;
+      state.error = null;
     },
     fetchSucesso: {
       reducer(state, action) {
@@ -31,10 +33,16 @@ const slice = createSlice({
       state.data = null;
       state.error = action.payload;
     },
+    tokenReset(state) {
+      state.loading = false;
+      state.data = null;
+      state.error = null;
+    },
   },
 });
 
-export const { fetchIniciado, fetchSucesso, fetchErro } = slice.actions;
+export const { fetchIniciado, fetchSucesso, fetchErro, tokenReset } =
+  slice.actions;
 export default slice.reducer;
 
 export const fetchToken = (usuario, senha) => async (dispatch) => {
@@ -42,9 +50,13 @@ export const fetchToken = (usuario, senha) => async (dispatch) => {
     dispatch(fetchIniciado());
 
     const { url, options } = FETCH_USER_TOKEN(usuario, senha);
-    const token = await fetch(url, options).then((resp) => resp.json());
+    const resp = await fetch(url, options);
+
+    if (!resp.ok) throw new Error("Usuário ou senha inválidos");
+
+    const token = await resp.json();
     return dispatch(fetchSucesso(token));
   } catch (erro) {
-    return dispatch(fetchErro(erro));
+    return dispatch(fetchErro(erro.message));
   }
 };
