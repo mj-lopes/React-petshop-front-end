@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+<p align='center'>  
+<a href='https://nice-weather.vercel.app' > 
+  <img src='https://user-images.githubusercontent.com/56007721/152653853-151f1e9c-f7b5-4266-b280-e84b998130a6.png' alt='Gato ao lado da logo da React Petshop'> 
+</a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align='center'>React Petshop</h1> 
+<p align='center'>  
+React Petshop é um E-COMMERCE de uma petshop virtual. 
 
-## Available Scripts
+<p align="center">
+ <a href="#requisitos">Pré-requisitos</a> •
+ <a href="#instalacao">Instalação</a> •
+ <a href="#funcionando">Funcionando</a> •
+ <a href="#tecnologias">Tecnologias</a> •   
+ <a href="#autor">Autor</a> 
+</p>
 
-In the project directory, you can run:
+<div align='center'>
+	<h3>Status do Projeto</h3>
+	<p>🚧 Em construção 🚧</p>
+</div>
 
-### `npm start`
+<h2> Features 🐕</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Usuário
+  - Login
+  - Cadastro
+- Login automatico caso a última sessão for com login válido
+- Rotas protegidas 
+- Página dos produtos por categoria
+- Barra de pesquisa para a busca por nome
+- Produtos
+  - Nome
+  - Descrição
+  - Preço  
+  - Foto
+  - Comentários
+  - Avaliação
+- Carrinho
+  - Lista dos produtos adicionados
+  - Remoção ou adição de quantidade
+  - Aplicação de cupons
+  - Resumo com valor total da compra e parcelado
+- Perfil de usuário 
+  - Histórico de compras
+    - Lista dos produtos
+    - Quantidade comprada
+    - Preço quando comprado
+    - Data da compra
+    - Status da compra
+  - Logout do usuário
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<div align='center'> 
+<img src='https://user-images.githubusercontent.com/56007721/152652222-12bc82b0-d0f0-4ea6-80d7-fdf2aa92fd25.png'/ style="width: 520px;" />   <img src='https://user-images.githubusercontent.com/56007721/152652243-c52c174c-ef4f-4b6a-a6c1-7303a5b0c554.png' style="width: 220px;"/>
 
-### `npm test`
+<a href='https://react-petshop-front-end-mj-lopes.vercel.app/'> <h3> Faça um teste online 😺</h3> </a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</div>
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2 id='requisitos'> Pré-requisitos ⚙</h2>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para o front-end funcionar 100%, é necessário que você também implemente antes o [back-end do projeto](https://github.com/mj-lopes/React-petshop-back-end). 
 
-### `npm run eject`
+Além disto é bom ter um editor de texto para trabalhar com o código, recomendo o [VSCode](https://code.visualstudio.com/).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h2 id='instalacao'> Instalação 🔧</h2>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+``` 
+No cmd, gitbash ou terminal de preferência: 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Clone esse repositório:
+$ git clone https://github.com/mj-lopes/React-petshop-front-end
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Navegue para o diretório raiz do projeto
+$ cd React-petshop-front-end
 
-## Learn More
+# Instale as dependências do projeto
+$ npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h2 id='funcionando'> Funcionando 💨 </h2>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Ainda na pasta raiz do projeto, no terminal, execute o comando: ``` $ npm start ```.<br/>
+O navegador irá abrir em uma nova janela o app já rodando, do contrário, abra em [http://localhost:3000](http://localhost:3000).
+Caso queira executar com o back-end, altere a porta do back-end ou front-end para evitar conflitos. 
 
-### Code Splitting
+<h2 id='tecnologias'> Tecnologias 🛠 </h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+As seguintes ferramentas foram usadas na construção deste projeto:
 
-### Analyzing the Bundle Size
+- [React](https://pt-br.reactjs.org/)
+- [Redux](https://react-redux.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Router](https://reactrouter.com/)
+- [MUI](https://mui.com/)
+- [Emotion](https://emotion.sh/docs/introduction)
+- [Formik](https://formik.org/docs/overview)
+- [Yup](https://www.npmjs.com/package/yup)
+- [Figma](https://www.figma.com/ui-design-tool/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<h2 id='autor'> Autor </h2>
 
-### Making a Progressive Web App
+<img src='https://user-images.githubusercontent.com/56007721/140599522-58255910-aa8e-4045-9cf9-2f061d6dd472.png' style="width: 120px;">
+<p>Feito com 🧡 por <a href='https://github.com/mj-lopes'>Marcos Júnior</a>. </p><br/>
+<p>Entre em contato 👇
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[![Gmail Badge](https://img.shields.io/badge/-mlrj.junior%40gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:mlrj.junior@gmail.com)](mailto:mlrj.junior@gmail.com)
+[![Linkedin Badge](https://img.shields.io/badge/-Marcos_Junior-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/mlrjunior/)](https://www.linkedin.com/in/mlrjunior/) 
+</p>
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
