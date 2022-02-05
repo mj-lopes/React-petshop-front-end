@@ -1,5 +1,5 @@
 <p align='center'>  
-<a href='https://nice-weather.vercel.app' > 
+<a href='https://react-petshop-front-end-mj-lopes.vercel.app/' > 
   <img src='https://user-images.githubusercontent.com/56007721/152653853-151f1e9c-f7b5-4266-b280-e84b998130a6.png' alt='Gato ao lado da logo da React Petshop'> 
 </a>
 </p>
